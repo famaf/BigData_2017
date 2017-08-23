@@ -1,0 +1,1389 @@
+{
+  "paragraphs": [
+    {
+      "text": "val baseDir=\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/03_rdd_notebook\"\nprint(\"\"\"%html\n<center>\n    <h1>Programación Distribuida sobre Grandes Volúmenes de Datos</h1>\n</center>\n\n<br>\n\n<h3 style=\"text-align:center;\">\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    Facultad de Matemática Astronomía Física y Computación\n    </a>\n<br/>\n    <a href=\"http://www.unc.edu.ar\">\n    Universidad Nacional de Córdoba\n    </a>\n<br/>\n    <center>\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    <img src=\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt=\"Drawing\" style=\"width:50%;\"/>\n    </a>\n    </center>\n</h3>\n\n<h4 style=\"text-align:center;\"> Damián Barsotti - Ezequiel Orbe </h4>\n\n<p style=\"font-size:15px;\">\n    <br />\n        This work is licensed under a\n        <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.\n    <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">\n        <img alt=\"Creative Commons License\" style=\"border-width:0;vertical-align:middle;float:right\" src=\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" />\n    </a>\n</p>\n\"\"\")\n",
+      "dateUpdated": "Aug 18, 2016 11:00:42 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/scala",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_810221159",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<center>\n    <h1>Programación Distribuida sobre Grandes Volúmenes de Datos</h1>\n</center>\n\n<br>\n\n<h3 style=\"text-align:center;\">\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    Facultad de Matemática Astronomía Física y Computación\n    </a>\n<br/>\n    <a href=\"http://www.unc.edu.ar\">\n    Universidad Nacional de Córdoba\n    </a>\n<br/>\n    <center>\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    <img src=\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt=\"Drawing\" style=\"width:50%;\"/>\n    </a>\n    </center>\n</h3>\n\n<h4 style=\"text-align:center;\"> Damián Barsotti - Ezequiel Orbe </h4>\n\n<p style=\"font-size:15px;\">\n    <br />\n        This work is licensed under a\n        <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.\n    <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">\n        <img alt=\"Creative Commons License\" style=\"border-width:0;vertical-align:middle;float:right\" src=\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" />\n    </a>\n</p>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:55",
+      "dateFinished": "Aug 18, 2016 11:00:36 PM",
+      "dateStarted": "Aug 18, 2016 11:00:34 PM",
+      "focus": true
+    },
+    {
+      "text": "%md #Tutorial Scala (parte 2)\n\nEste tutorial de Scala ayudará a entender los conceptos básicos para programar en este lenguaje.\nSe presentarán los temas con la posibilidad de ejecutar y modificar los ejemplos en la misma página de lectura para que pruebe y se familiarice con el lenguaje.",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "enabled": false,
+        "tableHide": false,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 12
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_1132276461",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h1>Tutorial Scala (parte 2)</h1>\n<p>Este tutorial de Scala ayudará a entender los conceptos básicos para programar en este lenguaje.\n<br  />Se presentarán los temas con la posibilidad de ejecutar y modificar los ejemplos en la misma página de lectura para que pruebe y se familiarice con el lenguaje.</p>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:56"
+    },
+    {
+      "text": "%md ##Pattern Matching",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "enabled": false,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 12
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_880601097",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h2>Pattern Matching</h2>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:57"
+    },
+    {
+      "text": "%md Si usted conoce el lenguage Haskell siguiente ejemplo le resultará familiar.\nSi usted conoce lenguages imperativo como C o Java esta construcción es parecida a las sentencias `switch` con algunas diferencias:\n* La palabra clave `match` se escribe después de la variable (`selection match`) a diferencia de `switch selection` en los otros lenguajes.\n* No hace falta la sentencia `break`.\n* El caso por defecto es `case _` o `case x` donde `x` es cualquier identificador que comience con minúscula.\n\nPara más información ver\n* [Pattern Matching](http://docs.scala-lang.org/tutorials/tour/pattern-matching.html).",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "enabled": false,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 6
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_959460339",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>Si usted conoce el lenguage Haskell siguiente ejemplo le resultará familiar.\n<br  />Si usted conoce lenguages imperativo como C o Java esta construcción es parecida a las sentencias <code>switch</code> con algunas diferencias:</p>\n<ul>\n<li>La palabra clave <code>match</code> se escribe después de la variable (<code>selection match</code>) a diferencia de <code>switch selection</code> en los otros lenguajes.</li>\n<li>No hace falta la sentencia <code>break</code>.</li>\n<li>El caso por defecto es <code>case _</code> o <code>case x</code> donde <code>x</code> es cualquier identificador que comience con minúscula.</li>\n</ul>\n<p>Para más información ver</p>\n<ul>\n<li><a href=\"http://docs.scala-lang.org/tutorials/tour/pattern-matching.html\">Pattern Matching</a>.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:58"
+    },
+    {
+      "text": "val selection = \"Uno\"  \nselection match {  \n  case \"Uno\" => println(\"Seleccionó la opción Uno!\")  \n  case \"Dos\" => println(\"Seleccionó la opción Dos!\")  \n  case _ => println(\"Seleccionó otra cosa\")  \n}  ",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_1592675188",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:59"
+    },
+    {
+      "text": "%md ## Currificación",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_1953376262",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h2>Currificación</h2>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:60"
+    },
+    {
+      "text": "%md &nbsp;\n\nLa currificación es una forma de definir funciones muy utilizada en los lenguajes funcionales.\nConsiste en definir sus parámetros de forma separada lo que permite usar la función predefiniendo parámetros.",
+      "dateUpdated": "Aug 18, 2016 9:00:00 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_654420514",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>&nbsp;</p>\n<p>La currificación es una forma de definir funciones muy utilizada en los lenguajes funcionales.\n<br  />Consiste en definir sus parámetros de forma separada lo que permite usar la función predefiniendo parámetros.</p>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "dateStarted": "Aug 18, 2016 8:59:52 PM",
+      "dateFinished": "Aug 18, 2016 8:59:54 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:61"
+    },
+    {
+      "text": "def madd(x:Int,y:Int) = x+y // método \ndef madd_curry (x:Int)(y:Int) = x + y // método con currificación\nval fadd = (x:Int, y:Int) => x + y // función\nval fadd_curry = (x:Int) => (y:Int) => x + y // función con currificación\n\n// función que aplica una función \ndef aplicar(f: Int => Int, x : Int) = f(x)\n\naplicar(madd_curry(1),10)\naplicar(fadd_curry(1),10)\n\n// La siguiente funcion currifica funciones\nval curry = (f:(Int,Int) => Int) => (a : Int) => (b:Int) => f (a,b)\nval sumar = (x:Int,y:Int) => x+y\nval sumar_curry = curry (sumar)\nsumar_curry (1) (4)\n\ndef curry[A] (f:(A,A) => A) (a : A) (b : A) = f (a,b)\nval sumar1 = curry (sumar) (1) _ // función  de tipo Int => Int que suma 1\nsumar1(7)",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_521583258",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:62"
+    },
+    {
+      "text": "%md ##Colecciones",
+      "dateUpdated": "Aug 18, 2016 11:00:03 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 12
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_865069031",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h2>Colecciones</h2>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "dateStarted": "Aug 18, 2016 9:03:08 PM",
+      "dateFinished": "Aug 18, 2016 9:03:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:63"
+    },
+    {
+      "title": "Arrays",
+      "text": "%md &nbsp;\n* Los arreglos se construyen con `Array(element1, element2, ...)`.\n* Internamente los arreglos en Scala son los arreglos primitivos de Java (`Array[Int]` en Scala es `int[]` de Java, `Array[String]` es `String[]` de Java, etc.).\n* Los arreglos son mutables (pueden modificar sus elementos aunque no su tamaño).\n* Para imprimirlos se puede usar su método `mkString` (ver ejemplo).\n* Los elementos de un arreglo pueden ser de cualquier tipo, pero el tipo final es la superclase común más cercana:\n```scala\n  class Foo(val value1:Int)\n  class Bar(value1:Int, val value2:Int) extends Foo(value1)\n  val list:Array[Foo] = Array(new Foo(1), new Bar(2,3))\n```\n\nPara mas información sobre ver: \n* [Documentación Scala sobre arreglos](http://www.scala-lang.org/api/current/index.html#scala.Array).",
+      "dateUpdated": "Aug 18, 2016 11:00:00 PM",
+      "config": {
+        "enabled": false,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 12,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_908384136",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>&nbsp;</p>\n<ul>\n<li>Los arreglos se construyen con <code>Array(element1, element2, ...)</code>.</li>\n<li>Internamente los arreglos en Scala son los arreglos primitivos de Java (<code>Array[Int]</code> en Scala es <code>int[]</code> de Java, <code>Array[String]</code> es <code>String[]</code> de Java, etc.).</li>\n<li>Los arreglos son mutables (pueden modificar sus elementos aunque no su tamaño).</li>\n<li>Para imprimirlos se puede usar su método <code>mkString</code> (ver ejemplo).</li>\n<li>Los elementos de un arreglo pueden ser de cualquier tipo, pero el tipo final es la superclase común más cercana:<pre><code class=\"scala\">class Foo(val value1:Int)\nclass Bar(value1:Int, val value2:Int) extends Foo(value1)\nval list:Array[Foo] = Array(new Foo(1), new Bar(2,3))\n</code></pre>\n</li>\n</ul>\n<p>Para mas información sobre ver:</p>\n<ul>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.Array\">Documentación Scala sobre arreglos</a>.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "dateStarted": "Aug 18, 2016 9:09:14 PM",
+      "dateFinished": "Aug 18, 2016 9:09:15 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:64"
+    },
+    {
+      "title": "Arrays",
+      "text": "def printArray[K](array:Array[K]) = array.mkString(\"Array(\" , \", \" , \")\")  \n\n//Arreglo de tipo Array[Int]  \nval array1 = Array(1, 2, 3)  \nprintArray(array1)//>Array(1, 2, 3)\n\n//Arreglo de tipo Array[String]  \nval array2 = Array(\"a\", \"b\", \"c\")\nprintArray(array2)  //>Array(a, b, c)  \n\n//Los valores se acceden con (index) no [index]    \nval itemAtIndex0 = array2(0)   //>itemAtIndex0 = a\n\n//de igual manera se modifican    \narray2(0) = \"d\"    \nprintArray(array2)  //>Array(d, b, c)  \n\n//Arreglo de tipo Array[Any]  \nval array3 = Array(\"a\", 2, true)\nprintArray(array3)//>Array(a, 2, true)  ",
+      "dateUpdated": "Aug 18, 2016 9:04:16 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788874_1542141005",
+      "id": "20160818-202628_484322260",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:65"
+    },
+    {
+      "title": "Operaciones sobre Arrays",
+      "text": "val (array1,array3) = (Array(1, 2, 3),Array(\"a\", 2, true))\n//Para concatenar dos arreglos se usa el operador ++\n//Para agregar adelante se usa +: y atrás :+    \nval concatenated = \"adelante\" +: (array1 ++ array3) :+ \"atrás\"\nprintArray(concatenated)  //>Array(adelante 1, 2, 3, a, 2, true, atrás)  \n\n//Para encontrar la posición de un elemento:\narray3.indexOf(2) //>1  \n\n//Búsqueda\nval personArray = Array((\"Pedro\",1), (\"Kuka\",2), (\"Porota\",3))\ndef findByName(name:String) = personArray.find(_._1 == name).getOrElse((\"Lucas\",4))  //>findByName(name = \"foo\") => (Lucas,4)  \nval findPedro = findByName(\"Pedro\")  //>finPedro = (Pedro,2)  \nval findMaria = findByName(\"Maria\")  //>findMaria = (Lucas,4)  \n\nval pedroFound = findPedro._2  //>pedroFound = 1  \nval mariaFound = findMaria._2  //>mariaFound = 4  \n\n// Substracción\nval diffArray = Array(1,2,3,4).diff(Array(3,1))\nprintArray(diffArray) //>Array(2, 4) ",
+      "dateUpdated": "Aug 18, 2016 9:12:03 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1782769927",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:66"
+    },
+    {
+      "title": "Listas",
+      "text": "%md\n\n* Las listas se construyen con `List(element1, element2, ...)`.\n* Los tipos de sus elementos pueden ser de cualquier tipo, pero el tipo final es la superclase común más cercana:\n```scala\n  class Foo(val value1:Int)\n  class Bar(value1:Int, val value2:Int) extends Foo(value1)\n  val list:List[Foo] = List(new Foo(1), new Bar(2,3))\n```\n* Las listas por defecto son **inmutables** (cualquier cambio crea una lista nueva, dejando la original tal cual). En el ejemplo siguiente se muestra como crear una mutable.\n* Están implementadas con listas ligadas por lo que agregar un elemento se hace a tiempo constante pero el acceso a un elemento es lineal.\n*  Se pueden concatenar listas mutables con inmutables, devolviendo el tipo inmutable. \n\nPara más información ver: \n* [Documentación Scala sobre listas](http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List).",
+      "dateUpdated": "Aug 18, 2016 10:59:54 PM",
+      "config": {
+        "enabled": false,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 12,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_94254130",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<ul>\n<li>Las listas se construyen con <code>List(element1, element2, ...)</code>.</li>\n<li>Los tipos de sus elementos pueden ser de cualquier tipo, pero el tipo final es la superclase común más cercana:<pre><code class=\"scala\">class Foo(val value1:Int)\nclass Bar(value1:Int, val value2:Int) extends Foo(value1)\nval list:List[Foo] = List(new Foo(1), new Bar(2,3))\n</code></pre>\n</li>\n<li>Las listas por defecto son <strong>inmutables</strong> (cualquier cambio crea una lista nueva, dejando la original tal cual). En el ejemplo siguiente se muestra como crear una mutable.</li>\n<li>Están implementadas con listas ligadas por lo que agregar un elemento se hace a tiempo constante pero el acceso a un elemento es lineal.</li>\n<li>Se pueden concatenar listas mutables con inmutables, devolviendo el tipo inmutable.</li>\n</ul>\n<p>Para más información ver:</p>\n<ul>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List\">Documentación Scala sobre listas</a>.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "dateStarted": "Aug 18, 2016 9:15:19 PM",
+      "dateFinished": "Aug 18, 2016 9:15:19 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:67"
+    },
+    {
+      "title": "Listas",
+      "text": "//Listas inmutable con tipo List[Int]  \nval list1 = List(1, 2, 3) //> list1 = List(1, 2, 3)  \n//Listas inmutable con tipo List[Any]  \nval list2 = List(\"a\", 2, true) //> list2 = List(a, 2, true)  \nimport collection.mutable   \n//Listas mutables\nval mlist = mutable.ListBuffer(\"a\", \"b\", \"c\")  \n\n//Se accede con (indice) no [indice]   \nval firstItem = list1(0) //> firstItem = 1  \n\n//Se modifican sus valores de la misma forma (sulo listas mutables)    \nmlist(0) = \"d\"    \nmlist //> ArrayBuffer(d, b, c)",
+      "dateUpdated": "Aug 18, 2016 9:14:23 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_682874273",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:68"
+    },
+    {
+      "title": "Operaciones sobre Listas",
+      "text": "val (list1,list2) = (List(1, 2, 3),List(\"a\", 2, true))\n\n//Concatenacion con el operador ++ o ::: (solo listas)  \nlist1 ++ list2 //> List(1, 2, 3, a, 2, true)  \nlist1 ::: list2 //> List(1, 2, 3, a, 2, true)  \n\n//Para insertar adelante se usa :: (solo listas) or +:  \n0 :: list1 //> List(0, 1, 2, 3)  \n0 +: list1 //> List(0, 1, 2, 3)  \n\n//Para insertar atrás se usa :+ (poco eficiente para listas inmutables)  \nlist1 :+ 4 //> List(1, 2, 3, 4)  \n\nimport collection.mutable\nval mlist = mutable.ListBuffer(\"d\", \"b\", \"c\")\n//Todo junto:  \nval concatenated = 1 :: list1 ::: list2 ++ mlist :+ 'd' //> concatenated = List(1, 1, 2, 3, a, 2, true, d, b, c, d)  \n//La concatenación no modifica las listas originales     \nlist1 //> List(1, 2, 3) ",
+      "dateUpdated": "Aug 18, 2016 9:15:52 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1495316381",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:69"
+    },
+    {
+      "title": "Operaciones Sobre Listas",
+      "text": "val (list1,list2) = (List(1, 2, 3),List(\"a\", 2, true))\nimport collection.mutable\nval mlist = mutable.ArrayBuffer(\"d\", \"b\", \"c\", \"f\")\n\n//Eliminación de elementos (solo listas mutables y crea una nueva):  \n//crea un arreglo nuevo con la \"c\" eliminada, mlist queda igual  \nmlist - \"c\" //> ArrayBuffer(d, b, f)  \n//crea un nuevo arreglo con e, f eliminados, mlist queda igual  \nmlist -- List(\"e\", \"f\") //> ArrayBuffer(d, b, c)  \n//mlist no se modifica  \nmlist //> ArrayBuffer(d, b, c)  \n\n//Eliminación de elementos, la lista si cambia (solo mutables):   \n//elimina c de la lista  \nmlist -= \"c\" //> ArrayBuffer(d, b, e, f, g)  \n//elimina e and f  \nmlist --= List(\"e\", \"f\") //> ArrayBuffer(d, b, e, f, g)  \nmlist //> ArrayBuffer(d, b)  \n\n//Agregar elelmentos, la lista si cambia (solo mutables)   \nmlist += \"e\" //> ArrayBuffer(d, b, e)  \nmlist ++= List(\"f\", \"g\") //> ArrayBuffer(d, b, e, f, g)  \nmlist //ArrayBuffer(d, b, e, f, g) //> ArrayBuffer(d, b, e, f, g)  ",
+      "dateUpdated": "Aug 18, 2016 9:16:09 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1871212485",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:70"
+    },
+    {
+      "title": "Operaciones sobre listas",
+      "text": "//Diff   \nval diffList = List(1,2,3,4) diff List(2,3) //> diffList = List(1, 4)  \n\nval personList = List((\"Pepe\",1), (\"Carlos\",2), (\"Kuka\",3))\n\n//Búsqueda (devuelve la primer aparición)   \ndef findByName(name:String) = personList.find(_._1 == name).getOrElse((\"David\",4)) //> findByName(name = \"foo\") => (David,4)  \nval findPepe = findByName(\"Pepe\")  \nval findKuka = findByName(\"María\")  \n\nfindPepe._2 //> 1  \nfindKuka._2 //> 4",
+      "dateUpdated": "Aug 18, 2016 9:16:24 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_442695254",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:71"
+    },
+    {
+      "title": "Sets",
+      "text": "%md\n* Los conjuntos se construyen con `Set(element1, element2, ...)`.\n* Pueden contener diferentes tipos. El tipo final es la superclase comun más cercana.\n* El tipo por defecto de los conjuntos es `Predef.Set` el cual es inmutable. En el ejemplo siguiente se muestra como crear uno mutable.\n* No admite duplicación de elementos. Al agregar uno que ya estaba se sobreescribe.\n\nPara más información ver\n* [scala.Predef](http://www.scala-lang.org/api/current/index.html#scala.Predef$).\n* [Documentación Scala sobre conjuntos](http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Set).",
+      "dateUpdated": "Aug 18, 2016 9:29:53 PM",
+      "config": {
+        "enabled": false,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "colWidth": 12,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_846236849",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<ul>\n<li>Los conjuntos se construyen con <code>Set(element1, element2, ...)</code>.</li>\n<li>Pueden contener diferentes tipos. El tipo final es la superclase comun más cercana.</li>\n<li>El tipo por defecto de los conjuntos es <code>Predef.Set</code> el cual es inmutable. En el ejemplo siguiente se muestra como crear uno mutable.</li>\n<li>No admite duplicación de elementos. Al agregar uno que ya estaba se sobreescribe.</li>\n</ul>\n<p>Para más información ver</p>\n<ul>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.Predef$\">scala.Predef</a>.</li>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Set\">Documentación Scala sobre conjuntos</a>.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:73"
+    },
+    {
+      "title": "Sets",
+      "text": "val set1 = Set(1, 2, 3) //Conjunto immutable de tipo Set[Int]  \nval set2 = Set(\"a\", 2, true) //Conjunto inmutable de tipo Set[Any]\n\nimport collection.mutable  \nval mset = mutable.HashSet(\"a\", \"b\", \"c\") // Versión mutable de conjunto \n\n//No admite duplicados\nprintln(Set(1,2,3,2,4,3,2,1,2)) //Set(1, 2, 3, 4)  \n\n//Pertenece   \nval oneExists = set1(1)  \nval fourExists = set1(4)  \nprintln(oneExists) // true  \nprintln(fourExists) // false  \n// Se puede usar mset(\"a\") = false pero no es recomendado",
+      "dateUpdated": "Aug 18, 2016 9:36:01 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_514472829",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:74"
+    },
+    {
+      "title": "Operaciones sobre Sets",
+      "text": "val set1 = (Set(1, 2, 3),Set(\"a\", 2, true))\nimport collection.mutable  \nval mset = mutable.HashSet(\"a\", \"b\", \"c\")\n\n//Concatenación (remueve duplicados)  \nval concatenated = set1 ++ set2 ++ mset  \nprintln(concatenated) // Set(1, a, true, 2, b, 3, c)  \n//Concatenacion no modifica los conjuntos originales   \nprintln(set1) //Set(1, 2, 3)  \n\n// Se pueden eliminar elementos de los conjuntos mutables\nmset -= \"c\"  \nprintln (mset) //Set(\"b\")  \n// Se puede usar mset(\"a\") = false pero no es recomendado\n\n",
+      "dateUpdated": "Aug 18, 2016 9:30:25 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_322430640",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:75"
+    },
+    {
+      "title": "Operaciones sobre Sets",
+      "text": "//Agregar solo en conjuntos mutables  \nmset += \"e\"  \nmset ++= Set(\"f\", \"g\")  \n\nprintln (mset) //Set(f, g, e, b)  \n//Diff  \nval diffSet = Set(1,2,3,4) diff Set(2,3)  \nprintln(diffSet) // Set(1, 4)  \n\n//Búsqueda  \nval personSet = Set((\"Pepe\",1), (\"Carlos\",2), (\"Kuka\",3))  \ndef findByName(name:String) = personSet.find(_._1 == name).getOrElse((\"David\",4))  \nval findPepe = findByName(\"Pepe\")  \nval findKuka = findByName(\"Maria\")  \n\nprintln(findPepe._2) //1  \nprintln(findKuka._2) //4  \n// Para búsqueda sobre claves es mejor usa Map (lo veremos mas adelante)",
+      "dateUpdated": "Aug 18, 2016 9:30:25 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_2147400601",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:76"
+    },
+    {
+      "title": "Maps",
+      "text": "%md &nbsp;\n* Los *Maps* se construyen con `Map(key1 -> value1, key2 -> value2, ...)`\n* Pueden almacenar diferentes tipos, pero el tipo final de las claves/valores serán la superclase común más cercana.\n* El `Map` por defecto (`Predef.Map`) es inmutable.\n* No se pueden tener claves duplicadas. Si se agrega un par clave/valor que ya existe se sobreescribe.\n\nVer también:\n* [scala.Predef](http://www.scala-lang.org/api/current/index.html#scala.Predef$).\n* [Documentación Scala sobre maps](http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map).",
+      "dateUpdated": "Aug 18, 2016 9:36:19 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_107159126",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>&nbsp;</p>\n<ul>\n<li>Los <em>Maps</em> se construyen con <code>Map(key1 -&gt; value1, key2 -&gt; value2, ...)</code></li>\n<li>Pueden almacenar diferentes tipos, pero el tipo final de las claves/valores serán la superclase común más cercana.</li>\n<li>El <code>Map</code> por defecto (<code>Predef.Map</code>) es inmutable.</li>\n<li>No se pueden tener claves duplicadas. Si se agrega un par clave/valor que ya existe se sobreescribe.</li>\n</ul>\n<p>Ver también:</p>\n<ul>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.Predef$\">scala.Predef</a>.</li>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map\">Documentación Scala sobre maps</a>.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:77"
+    },
+    {
+      "title": "Maps",
+      "text": "val map = Map(\"one\" -> 1, \"two\" -> 2, \"three\" -> 3)   \n//Map de tipo Map[String, Int]  \n\n//Maps elimina duplicados de las claves:  \nprintln(Map(\"a\" -> 1, \"a\" -> 2)) //Map(a -> 2)  \n\n//Tomar un elemento según clave usando map(key)   \nval one = map(\"one\")  \nprintln(one) // 1 \n\n// Si la clave no existe lanza la exceptcion NoSuchElementException\n//val four = map(\"four\")\n// Hay que usar el método get que devuelve una Option (se explicará después)\nval fourExistsOption = map.get(\"four\")  \nprintln(fourExistsOption.isDefined) // false\nprintln(fourExistsOption)",
+      "dateUpdated": "Aug 18, 2016 9:36:36 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_718105164",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:78"
+    },
+    {
+      "title": "Operaciones sobre maps",
+      "text": "import collection.mutable  \nval mmap = mutable.HashMap(\"a\" -> 1, \"b\" -> 2 , \"c\" -> 3)   \n//la versión mutable del Map  \n\n//Se pueden agregar o modificar elementos con:\nmmap(\"d\") = 4   \nprintln(mmap) //Map(b -> 2, d -> 4, a -> 1, c -> 3)  \n\nval (map1,map2) = (Map(\"one\" -> 1, \"two\" -> 2, \"three\" -> 3), Map(1 -> \"one\", \"2\" -> 2.0, 3.0 -> false))   \n// map 1 es de tipo Map[String,Int] y map2 es de tipo Map[Any,Any]\n\n//Concatenación con ++   \n//(elimina duplicados, no mantiene el orde)  \nval concatenated = map1 ++ map2 ++ mmap\nprintln(concatenated)   \n// Map(three -> 3, 1 -> one, two -> 2, a -> 1, b -> 2, 3.0 -> false, 2 -> 2.0, c -> 3, one -> 1, d -> 4)  \n//Concatenación no modifica los maps originales   \nprintln(map1) //Map(one -> 1, two -> 2, three -> 3) ",
+      "dateUpdated": "Aug 18, 2016 9:28:26 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "tableHide": false,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_543506175",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:79"
+    },
+    {
+      "title": "Operaciones sobre maps",
+      "text": "import collection.mutable  \nval mmap = mutable.HashMap(\"a\" -> 1, \"b\" -> 2 , \"c\" -> 3) \n\n//Removing elements (mutable Sets only)  \nmmap -= \"c\"  \nprintln (mmap) //Map(b -> 2, a -> 1)  \n\n//Adding elements (mutable Lists only)  \nmmap += \"e\" -> 5  \nmmap ++= Map(\"f\" -> 6, \"g\" -> 7)  \nprintln (mmap) //Map(e -> 5, b -> 2, g -> 7, a -> 1, f -> 6)\n\n//Búsqueda  \nval personMap = Map((\"Pepe\",1), (\"Carlos\",2), (\"Kuka\",3))  \ndef findByName(name:String) = personSet.find(_._1 == name).getOrElse((\"David\",4))  \nval findPepe = findByName(\"Pepe\")  \nval findKuka = findByName(\"Maria\")  \n\nprintln(findPepe._2) //1  \nprintln(findKuka._2) //4  ",
+      "dateUpdated": "Aug 18, 2016 9:28:34 PM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_70411293",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:80"
+    },
+    {
+      "text": "%md ## Contenedores Mutables",
+      "dateUpdated": "Aug 18, 2016 8:26:28 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_440224611",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h2>Contenedores Mutables</h2>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:81"
+    },
+    {
+      "title": "Contenedores Mutables",
+      "text": "%md &nbsp;\nScala promueve el uso de contenedores inmutables como `List`, `Set` y `Map`. De todas maneras, hay veces que se necesitan las versiones mutables por cuestiones de eficiencia.\n\nComo ya vimos Scala provee las versiones mutables de los contenedores en `scala.colections.mutable`:\n\n* `ListBuffer` es la versión mutables de `List`. \n   Están implementadas con listas ligadas: al igual que `List`, agregar un elemento al principio o al final se hace a tiempo constante y el acceso a un elemento es a tiempo lineal.\n* `arrayBuffer` es otra versión mutable de `List`. \n  La diferencia con la anterior es que se implementa con arreglos: el acceso es a tiempo constante pero agregar un elemento al principio o al final es lineal.\n* `hashSet` es la versión mutable de `Set`.\n* `hashMap` es la versión mutable de `Map`.\n   Estas dós últimas tienen acceso y agregado constantes (casi siempre, se impelemntan con tablas hash).\n\nEs buena práctica de programación es agregar la palabra `mutable.` cuando se crean los contenedores, como muestra el ejemplo siguiente. \n\n---\n\n* Los contenedores mutables permiten agregar y borrar valores sin necesidad de hacer copia de todo el objeto.\n* Las asignaciones a si mismo `+=`, `++=`, `-=`, `--=` son métodos de todos los contenedores mutable.\nPara más información ver:\n* [BufferLike](http://www.scala-lang.org/api/current/index.html#scala.collection.mutable.BufferLike)",
+      "dateUpdated": "Aug 18, 2016 10:47:24 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1541660002",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>&nbsp;\n<br  />Scala promueve el uso de contenedores inmutables como <code>List</code>, <code>Set</code> y <code>Map</code>. De todas maneras, hay veces que se necesitan las versiones mutables por cuestiones de eficiencia.</p>\n<p>Como ya vimos Scala provee las versiones mutables de los contenedores en <code>scala.colections.mutable</code>:</p>\n<ul>\n<li><code>ListBuffer</code> es la versión mutables de <code>List</code>.\n<br  />Están implementadas con listas ligadas: al igual que <code>List</code>, agregar un elemento al principio o al final se hace a tiempo constante y el acceso a un elemento es a tiempo lineal.</li>\n<li><code>arrayBuffer</code> es otra versión mutable de <code>List</code>.\n<br  />La diferencia con la anterior es que se implementa con arreglos: el acceso es a tiempo constante pero agregar un elemento al principio o al final es lineal.</li>\n<li><code>hashSet</code> es la versión mutable de <code>Set</code>.</li>\n<li><code>hashMap</code> es la versión mutable de <code>Map</code>.\n<br  />Estas dós últimas tienen acceso y agregado constantes (casi siempre, se impelemntan con tablas hash).</li>\n</ul>\n<p>Es buena práctica de programación es agregar la palabra <code>mutable.</code> cuando se crean los contenedores, como muestra el ejemplo siguiente.</p>\n<hr />\n<ul>\n<li>Los contenedores mutables permiten agregar y borrar valores sin necesidad de hacer copia de todo el objeto.</li>\n<li>Las asignaciones a si mismo <code>+=</code>, <code>++=</code>, <code>-=</code>, <code>--=</code> son métodos de todos los contenedores mutable.\n<br  />Para más información ver:</li>\n<li><a href=\"http://www.scala-lang.org/api/current/index.html#scala.collection.mutable.BufferLike\">BufferLike</a></li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:82",
+      "dateFinished": "Aug 18, 2016 10:47:16 PM",
+      "dateStarted": "Aug 18, 2016 10:47:15 PM",
+      "focus": true
+    },
+    {
+      "text": "import scala.collection.mutable  \n\nval arrayBuffer = mutable.ArrayBuffer(1, 2, 3)   \nval listBuffer = mutable.ListBuffer(\"a\", \"b\", \"c\")  \nval hashSet = mutable.Set(0.1, 0.2, 0.3)  \nval hashMap = mutable.Map(\"one\" -> 1, \"two\" -> 2)  ",
+      "dateUpdated": "Aug 18, 2016 10:47:51 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1392017959",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "import scala.collection.mutable\narrayBuffer: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3)\nlistBuffer: scala.collection.mutable.ListBuffer[String] = ListBuffer(a, b, c)\nhashSet: scala.collection.mutable.Set[Double] = Set(0.3, 0.2, 0.1)\nhashMap: scala.collection.mutable.Map[String,Int] = Map(one -> 1, two -> 2)\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:83",
+      "title": "Contenedores Mutables",
+      "focus": true
+    },
+    {
+      "text": "import scala.collection.mutable  \n\nval arrayBuffer = mutable.ArrayBuffer(1, 2, 3)   \nval listBuffer = mutable.ListBuffer(\"a\", \"b\", \"c\")  \nval hashMap = mutable.Map(\"one\" -> 1, \"two\" -> 2, \"three\" -> 3)  \n\narrayBuffer += 4  \nlistBuffer += \"d\"  \narrayBuffer -= 1  \nlistBuffer -= \"a\"  \nhashMap += \"four\" -> 4  \nhashMap -= \"one\"  \n\narrayBuffer ++= List(5, 6, 7)  \nhashMap ++= Map(\"five\" -> 5, \"six\" -> 6)  \nhashMap --= Set(\"one\", \"three\")  \n\n\nprintln(arrayBuffer)  \nprintln(listBuffer)  \nprintln(hashMap)  ",
+      "dateUpdated": "Aug 18, 2016 10:48:00 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1881598052",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:86",
+      "title": "Contenedores Mutables"
+    },
+    {
+      "text": "%md Una observación más con `+=`, `++=`, `-=`, `-== `:\n* Para contenedores inmutables - no tienen estos métodos, pero si los declaramos con `var` en vez de `val` el compilador lo expande a `variable = variable op param` (ver el ejemplo).\n* Para contenedores mutables - son métodos del contenedor y lo modifican.",
+      "dateUpdated": "Aug 18, 2016 10:50:15 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1262370177",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>Una observación más con <code>+=</code>, <code>++=</code>, <code>-=</code>, <code>-==</code>:</p>\n<ul>\n<li>Para contenedores inmutables - no tienen estos métodos, pero si los declaramos con <code>var</code> en vez de <code>val</code> el compilador lo expande a <code>variable = variable op param</code> (ver el ejemplo).</li>\n<li>Para contenedores mutables - son métodos del contenedor y lo modifican.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:88",
+      "title": "Contenedores Inmutables con VAR"
+    },
+    {
+      "text": "import scala.collection.mutable  \n\nvar immutableSet = Set(1, 2, 3)   \n\nimmutableSet += 4   \n//es lo mismo que:  \nimmutableSet = immutableSet + 4  \n\n//para el caso mutable:\nval mutableSet = mutable.Set(1, 2, 3)    \n\nmutableSet += 4   \n// es lo mismo que:   \nmutableSet.+=(4)  \n\nprintln(immutableSet, mutableSet)  ",
+      "dateUpdated": "Aug 18, 2016 10:50:42 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_660742043",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:89",
+      "title": "Contenedores Inmutables con VAR"
+    },
+    {
+      "text": "%md ## Clases",
+      "dateUpdated": "Aug 18, 2016 10:50:55 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1614853851",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h2>Clases</h2>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:90",
+      "dateFinished": "Aug 18, 2016 10:50:51 PM",
+      "dateStarted": "Aug 18, 2016 10:50:51 PM",
+      "focus": true
+    },
+    {
+      "text": "%md &nbsp;\n* Las clases en Scala definen sus atributos con `val` (solo lectura) o `var` (lectura/escritura). \n* Los métodos se definen con `def` en la forma que ya vimos.\n* Notar en el ejemplo que el acceso a los atributos y métodos es uniforme lo que permite cambiar la implementación sin cambiar el código que lo usa<sup>1</sup>.\n* Para declarar metodos o variables privadas se antepone la palabra clave `private` (ver ejemplo).\n* En Scala se inicializa todo lo definido dentro del cuerpo de la clase al momento de instanciarla en un objeto (ver ejemplo).\n* Las clases de Scala están pensadas para escribir una mínima cantidad de código. Es por ello que los parámetros de la clase se convierten automáticamente en atributos de solo lectura o lectura/escritura anteponiendo `val` y `var`.\n\n---\n\n* **Case Classes**: Son clases igual que las vistas pero exportan sus parámetros para proveer **pattern matching** (igual que en el lenguaje Haskell).\n\nPara más información ver:\n* [Documentación Scala sobre case clases](http://docs.scala-lang.org/tutorials/tour/case-classes).\n* [Introduccion a tipos algebraicos en Scala](http://tpolecat.github.io/presentations/algebraic_types.html).\n\n---\n\n* **Objetos Singletones:** Se usan cuando se quiere definir una unidad (módulo) que contenga una serie de métodos y valores agrupados.\n* Son una sola instancia de una clase por lo que se aplica todo lo que vimos sobre clases.\n* Se usan también para crear un ejecutable autónomo agregando un método `main`.\n* La inicialización se produce al momento de acceder un método o atributo.\n\nPara más información ver:\n* [Documentación Scala sobre objetos singletón](http://docs.scala-lang.org/tutorials/tour/singleton-objects).\n\n\n-----\n######1: Ver [Principio de acceso uniforme](http://en.wikipedia.org/wiki/Uniform_access_principle).\n",
+      "dateUpdated": "Aug 18, 2016 10:58:00 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1268617587",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<p>&nbsp;</p>\n<ul>\n<li>Las clases en Scala definen sus atributos con <code>val</code> (solo lectura) o <code>var</code> (lectura/escritura).</li>\n<li>Los métodos se definen con <code>def</code> en la forma que ya vimos.</li>\n<li>Notar en el ejemplo que el acceso a los atributos y métodos es uniforme lo que permite cambiar la implementación sin cambiar el código que lo usa<sup>1</sup>.</li>\n<li>Para declarar metodos o variables privadas se antepone la palabra clave <code>private</code> (ver ejemplo).</li>\n<li>En Scala se inicializa todo lo definido dentro del cuerpo de la clase al momento de instanciarla en un objeto (ver ejemplo).</li>\n<li>Las clases de Scala están pensadas para escribir una mínima cantidad de código. Es por ello que los parámetros de la clase se convierten automáticamente en atributos de solo lectura o lectura/escritura anteponiendo <code>val</code> y <code>var</code>.</li>\n</ul>\n<hr />\n<ul>\n<li><strong>Case Classes</strong>: Son clases igual que las vistas pero exportan sus parámetros para proveer <strong>pattern matching</strong> (igual que en el lenguaje Haskell).</li>\n</ul>\n<p>Para más información ver:</p>\n<ul>\n<li><a href=\"http://docs.scala-lang.org/tutorials/tour/case-classes\">Documentación Scala sobre case clases</a>.</li>\n<li><a href=\"http://tpolecat.github.io/presentations/algebraic_types.html\">Introduccion a tipos algebraicos en Scala</a>.</li>\n</ul>\n<hr />\n<ul>\n<li><strong>Objetos Singletones:</strong> Se usan cuando se quiere definir una unidad (módulo) que contenga una serie de métodos y valores agrupados.</li>\n<li>Son una sola instancia de una clase por lo que se aplica todo lo que vimos sobre clases.</li>\n<li>Se usan también para crear un ejecutable autónomo agregando un método <code>main</code>.</li>\n<li>La inicialización se produce al momento de acceder un método o atributo.</li>\n</ul>\n<p>Para más información ver:</p>\n<ul>\n<li><a href=\"http://docs.scala-lang.org/tutorials/tour/singleton-objects\">Documentación Scala sobre objetos singletón</a>.</li>\n</ul>\n<hr />\n<h6>1: Ver <a href=\"http://en.wikipedia.org/wiki/Uniform_access_principle\">Principio de acceso uniforme</a>.</h6>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:91",
+      "dateFinished": "Aug 18, 2016 10:56:17 PM",
+      "dateStarted": "Aug 18, 2016 10:56:16 PM",
+      "focus": true
+    },
+    {
+      "text": "//Clase con una variable de solo lectura y un método\nclass Persona(nombre:String, apellido:String){  \n  val nombreCompleto = s\"$nombre $apellido\"\n  def saludo = {\n      count +=1\n      \"Hola $nombre $apellido!\"\n  }\n  def saludos(n:Int) = \"Hola \" * n + s\"$nombre $apellido!\"\n  private var count: Int = 0\n  def verCount = count\n}  \nval p = new Persona(\"Oso\",\"Fumarola\")\nprintln(p.saludo)  \nprintln(p.saludos(3))  \nprintln(p.nombreCompleto)\n//p.nombreCompleto = \"hola\" // Atributo solo lectura, da error\n\np.saludo\np.verCount",
+      "dateUpdated": "Aug 18, 2016 10:52:25 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_1911910324",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:92",
+      "title": "Definición de una clase"
+    },
+    {
+      "text": "import scala.collection.mutable\n\nclass Prueba{\n      val set = new mutable.HashSet[Any]\n      println(\"Inicializando!!!\")\n      set += \"Esto es un string\"  \n      set += 732                 \n      set += 'c'                 \n      set += true                \n      \n\n      def doSomething { println(\"Ya se inicializo el objeto pru!\") }\n    }\n\nval pru = new Prueba\n\npru.doSomething\n\nprintln(pru.set)\n\nval pru2 = new Prueba",
+      "dateUpdated": "Aug 18, 2016 10:52:13 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_83801003",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:95",
+      "title": "Inicializacion"
+    },
+    {
+      "text": "class Persona(val nombre:String, var apellido:String)\n\nval p = new Persona(\"Oso\",\"Fumarola\")\nprintln(p.nombre)  \nprintln(p.apellido)  \np.apellido = \"Yogui\"\nprintln(p.apellido)",
+      "dateUpdated": "Aug 18, 2016 10:52:37 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_658870454",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:98",
+      "title": "Parámetros automáticos"
+    },
+    {
+      "text": "abstract class Mascota // El tipo de todos los constructores que siguen\n\ncase class Gato(nombre: String) extends Mascota\ncase class Pez(nombre: String) extends Mascota\ncase class Perro(nombre: String, edad: Int) extends Mascota\n\nval catulo: Mascota = Gato(\"Catulo\")\n\ndef hola(p: Mascota): String = \n  p match {\n    case Gato(n)      => \"Miau \" + n + \"!\"\n    case Pez(n)       => \"Hola pez \" + n + \".\"    \n    case Perro(n, _)  => \"Hola \" + n + \".\"    \n  }\n  \nhola(catulo)",
+      "dateUpdated": "Aug 18, 2016 10:55:11 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788875_1541756256",
+      "id": "20160818-202628_434711538",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:101",
+      "title": "Case Classes"
+    },
+    {
+      "text": "import scala.collection.mutable\n\nobject OPrueba{\n      val set = new mutable.HashSet[Any]\n      println(\"Inicializando!!!\")\n      set += \"Esto es un string\"  // add un string\n      set += 732                 // add un number\n      set += 'c'                 // add un character\n      set += true                // add un booleano\n      \n\n      def doSomething { println(\"Ya se inicializó.\") }\n    }\n    \nprintln(OPrueba.set)\nprintln(\"Todavía no se inicializó\")\nOPrueba.doSomething\n\nprintln(OPrueba.set)",
+      "dateUpdated": "Aug 18, 2016 10:56:39 PM",
+      "config": {
+        "colWidth": 6,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788876_1539832512",
+      "id": "20160818-202628_391181019",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:104",
+      "title": "Objetos Singletones"
+    },
+    {
+      "text": "%md ##Más sobre Scala\n\nEste tutorial cubre solo los conceptos básicos del lenguaje Scala.\nPara un conocimiento más completo se recomienda leer: \n* [10 Scala One Liners to Impress Your Friends](https://gist.github.com/mkaz/d11f8f08719d6d27bab5).\n* [Conversión implícita](http://www.artima.com/pins1ed/implicit-conversions-and-parameters.html) (complicado pero útil).\n* [A Tour of Scala](http://docs.scala-lang.org/tutorials/tour/tour-of-scala).\n",
+      "dateUpdated": "Aug 18, 2016 10:57:38 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788876_1539832512",
+      "id": "20160818-202628_1194782072",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<h2>Más sobre Scala</h2>\n<p>Este tutorial cubre solo los conceptos básicos del lenguaje Scala.\n<br  />Para un conocimiento más completo se recomienda leer:</p>\n<ul>\n<li><a href=\"https://gist.github.com/mkaz/d11f8f08719d6d27bab5\">10 Scala One Liners to Impress Your Friends</a>.</li>\n<li><a href=\"http://www.artima.com/pins1ed/implicit-conversions-and-parameters.html\">Conversión implícita</a> (complicado pero útil).</li>\n<li><a href=\"http://docs.scala-lang.org/tutorials/tour/tour-of-scala\">A Tour of Scala</a>.</li>\n</ul>\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:105",
+      "dateFinished": "Aug 18, 2016 10:57:33 PM",
+      "dateStarted": "Aug 18, 2016 10:57:33 PM",
+      "focus": true
+    },
+    {
+      "title": "FIN",
+      "text": "println(\"\"\"%html\n<script>\n    var heads = document.getElementsByTagName('h2');\n    var numHeads = heads.length;\n    var inner = \"\";\n    var i = 0;\n    var j = 0;\n    while (i < numHeads){\n        inner = heads[i].innerHTML;\n        inner = inner.replace(/^[\\W\\d]+/, \"\");\n        heads[i].innerHTML = (i+1) + \".- \" + inner;\n        i++\n    }\n</script>\n\"\"\")",
+      "dateUpdated": "Aug 18, 2016 10:58:22 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "tableHide": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788876_1539832512",
+      "id": "20160818-202628_1129453015",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "<script>\n    var heads = document.getElementsByTagName('h2');\n    var numHeads = heads.length;\n    var inner = \"\";\n    var i = 0;\n    var j = 0;\n    while (i < numHeads){\n        inner = heads[i].innerHTML;\n        inner = inner.replace(/^[\\W\\d]+/, \"\");\n        heads[i].innerHTML = (i+1) + \".- \" + inner;\n        i++\n    }\n</script>\n\n"
+      },
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:106",
+      "dateFinished": "Aug 18, 2016 10:58:42 PM",
+      "dateStarted": "Aug 18, 2016 10:58:23 PM",
+      "focus": true
+    },
+    {
+      "dateUpdated": "Aug 18, 2016 10:58:18 PM",
+      "config": {
+        "colWidth": 12,
+        "graph": {
+          "mode": "table",
+          "height": 300,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1471562788876_1539832512",
+      "id": "20160818-202628_1736609851",
+      "dateCreated": "Aug 18, 2016 8:26:28 PM",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:107",
+      "dateFinished": "Aug 18, 2016 10:58:39 PM",
+      "dateStarted": "Aug 18, 2016 10:57:41 PM",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT"
+      },
+      "text": "",
+      "focus": true
+    }
+  ],
+  "name": "Tutorial Scala (parte2)",
+  "id": "2BTGY9GD6",
+  "angularObjects": {
+    "2BQC1SZQM": [],
+    "2BNWEWM7N": [],
+    "2BR7UUV6M": [],
+    "2BRYXU7JH": [],
+    "2BP8MHHAQ": [],
+    "2BQ76ANRJ": [],
+    "2BRUR4E4E": [],
+    "2BP1MSC5S": [],
+    "2BQMZTCRG": [],
+    "2BR8ZAQ7W": [],
+    "2BRN67D4K": [],
+    "2BR1CC4RY": [],
+    "2BN1RC6KC": [],
+    "2BR35MUDT": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}
