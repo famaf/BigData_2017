@@ -9,32 +9,32 @@ clase del tema. Cualquier duda consulte un docente.
 */
 
 // Funcion map comun pero que devuelve lista de pares (clave,valor)
-def elMap[Kin,Vin,Kout,Vout]
-    (datosIn: List[(Kin,Vin)])
-    (fmap : (Kin,Vin) => List[(Kout,Vout)])
-    : List[(Kout,Vout)]
-    = datosIn.flatMap(kv => fmap(kv._1,kv._2)) // Cannot use just f, something wierd with implicits
+def elMap[Kin, Vin, Kout, Vout]
+    (datosIn: List[(Kin, Vin)])
+    (fmap: (Kin, Vin) => List[(Kout, Vout)])
+    : List[(Kout, Vout)]
+    = datosIn.flatMap(kv => fmap(kv._1, kv._2)) // Cannot use just f, something wierd with implicits
 
 // Agrupa los valores que tienen clave comun
-def agrupa[Kout,Vout]
-    (kvs : List[(Kout,Vout)])
-    : Map[Kout,List[Vout]]
+def agrupa[Kout, Vout]
+    (kvs: List[(Kout, Vout)])
+    : Map[Kout, List[Vout]]
     = kvs.groupBy(_._1).mapValues(_.unzip._2)
 
 //    = kvs.groupBy(_._1).mapValues(_.map(_.2))
 
 // Para cada clave aplico una operacion a su lista de valores
-def reduce[Kout,Vout,VFin]
-    (kvss : Map[Kout,List[Vout]])
-    (freduce : (Kout,  List[Vout]) => VFin)
+def reduce[Kout, Vout, VFin]
+    (kvss: Map[Kout, List[Vout]])
+    (freduce: (Kout, List[Vout]) => VFin)
     : List[VFin]
-    = kvss.map({case (k,vs) => freduce(k,vs)}).toList
+    = kvss.map({case (k, vs) => freduce(k, vs)}).toList
 
 //Junto todo
-def mapReduce[Kin,Vin,Kout,Vout,VFin]
-    (datosIn: List[(Kin,Vin)])
-    (fmap : (Kin,Vin) => List[(Kout,Vout)])
-    (freduce : (Kout,  List[Vout]) => VFin)
+def mapReduce[Kin, Vin, Kout, Vout, VFin]
+    (datosIn: List[(Kin, Vin)])
+    (fmap: (Kin, Vin) => List[(Kout, Vout)])
+    (freduce: (Kout,  List[Vout]) => VFin)
     : List[VFin]
     = {
         val resMap = elMap (datosIn) (fmap)
@@ -83,7 +83,7 @@ def countCharFile (filePath: String) = {
 
     import scala.io.Source
 
-    val lines : List[String] = Source.fromFile(filePath).getLines.toList
+    val lines: List[String] = Source.fromFile(filePath).getLines.toList
     val datos = lines.map(l => ((), l))
 
     val fmap = (_: Unit, l: String) => (l.split("").map((_, 1))).toList
@@ -112,10 +112,9 @@ Ayuda:
 */
 
 def wordCount (filePath: String) = {
-
     import scala.io.Source
 
-    val lines : List[String] = Source.fromFile(filePath).getLines.toList
+    val lines: List[String] = Source.fromFile(filePath).getLines.toList
     val datos = lines.map(l => ((), l))
 
     // Otra forma
@@ -139,12 +138,12 @@ una lista de sus amigos, hacer un programa con "mapReduce" que devuelve la
 lista de amigos en común de todos los pares de amigos posibles.
 
 La lista de amigos se almacena de la siguiente forma:
-val amigosDe = List(  ("A", List("B", "C", "D"))
-                    , ("B", List("A", "C", "D", "E"))
-                    , ("C", List("A", "B", "D", "E"))
-                    , ("D", List("A", "B", "C", "E"))
-                    , ("E", List("B", "C", "D"))
-                    )
+val amigosDe = List(("A", List("B", "C", "D")),
+                    ("B", List("A", "C", "D", "E")),
+                    ("C", List("A", "B", "D", "E")),
+                    ("D", List("A", "B", "C", "E")),
+                    ("E", List("B", "C", "D")),
+                   )
 
                map
 (A, [B, C, D]) ==> ({A, B}, [B, C, D])
@@ -170,6 +169,10 @@ val amigosDe = List(  ("A", List("B", "C", "D"))
                    ({E, C}, [B, C, D])
                    ({E, D}, [B, C, D])
 
+({A, B}, [B, C, D])
+({A, C}, [B, C, D])
+({A, D}, [B, C, D])
+
 Ver que la relación de amistad tiene que ser simétrica.
 
 Ayuda:
@@ -183,9 +186,38 @@ segundas componentes de ambas tuplas.
 A continuación se da un esqueleto del programa a completar:
 */
 
-// def amigosEnComun(ade: List[(String, List[String])]) = {
+def amigosEnComun(ade: List[(String, List[String])]) = {
+    val datos = ade.map(a => ((), a))
 
-// }
+    def fmap (unit: Unit, friends: List[(String, List[String])])
+             : List[(scala.collection.immutable.Set[String], List[String])] = {
+        import collection.mutable
+
+        val my_list = mutable.ListBuffer[( Set[String], List[String] )]()
+
+        val common_friend = friends(0)._1
+        val friends_list = friends(0)._2
+
+        for (f <- friends_list) {
+            my_list += ((Set(common_friend, f), friends_list))
+        }
+
+        return my_list.toList
+    }
+
+    // val freduce = (w: String, vs: List[Int]) => (w, vs.fold (0) (_+_))
+    def freduce (Set[String], List[List[String]]) : List[String] {
+        
+    }
+}
+
+// val amigosDe = List(("Mario", List("Alan", "Johny", "Elian")),
+//                     ("Alan", List("Mario", "Hector", "Johny", "Elian")),
+//                     ("Johny", List("Mario", "Alan", "Piojo", "Emi"))
+//                    )
+val amigosDe = List(("Mario", List("Alan", "Johny", "Elian")))
+amigosEnComun(amigosDe)
+
 
 //=============================================================================
 
@@ -202,7 +234,7 @@ Ayuda:
 Se puede hacer que la función "fmap" devuelva los pares ordenados de palabras
 en una misma linea con un contador igual a "1".
 Por ejemplo, en la linea "w1 w2 w3 w1" la función producirá:
-"(w1, w2):1, (w1, w3):1, (w1, w1):1, (w2, w3):1, (w1, w2):1, (w1, w3):1"
+(w1, w2):1, (w1, w3):1, (w1, w1):1, (w2, w3):1, (w1, w2):1, (w1, w3):1
 
 La función "freduce" recolectaría estos valores para llenar cada elemento de
 la matriz.
@@ -210,10 +242,36 @@ la matriz.
 A continuación se da un esqueleto del programa a completar:
 */
 
-// def wordCoOcurrence (filePath: String) = {
-//    ...
-//     mapReduce (datos) (fmap) (freduce)
-// }
+def wordCoOcurrence (filePath: String) = {
+    import scala.io.Source
+
+    val lines: List[String] = Source.fromFile(filePath).getLines.toList
+    val datos = lines.map(l => ((), l))
+
+    def fmap (unit: Unit, l: String) : List[((String, String), Int)] = {
+        import collection.mutable
+
+        val word_list = l.split(" ").filter(! _.isEmpty)
+        val pair_list = mutable.ListBuffer[(String, String)]()
+
+        for (i <- 0 until word_list.length) {
+            for (j <- 0 until word_list.length) {
+                if (i < j) {
+                    pair_list += ((word_list(i), word_list(j)))
+                }
+            }
+        }
+
+        return pair_list.toList.map((_, 1))
+    }
+
+    val freduce = (pair_list: (String, String), vs: List[Int]) => (pair_list, vs.fold (0) (_+_))
+
+    mapReduce (datos) (fmap) (freduce)
+}
+
+val word_coocurence = wordCoOcurrence("my_text.txt")
+// println(word_coocurence)
 
 //=============================================================================
 
@@ -224,15 +282,6 @@ Con el programa "mapReduce" calcule el promedio de una lista de numeros.
 
 A continuación se da un esqueleto del programa a completar:
 */
-// def countChar (str: String) = {
-//     val datos = str.toList.map(c => ((), c))
-
-//     val fmap = (_ :Unit, c: Char) => List((c, 1))
-//     val freduce = (c: Char, vs: List[Int]) => (c, vs.fold (0) (_+_))
-
-//     mapReduce (datos) (fmap) (freduce)
-// }
-
 
 def promedio (nums: List[Double]) : Double = {
     val len_list = nums.length
@@ -249,4 +298,4 @@ def promedio (nums: List[Double]) : Double = {
 }
 
 var average = promedio(List(1.0, 2.0, 3.0, 4.0, 5.0))
-println(average)
+// println(average) 
