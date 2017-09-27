@@ -68,41 +68,54 @@ def countChar (str: String) = {
 //=============================================================================
 
 /*
-Ejercicio 1
-===========
-En la celda siguiente modifique el programa anterior para que tome un archivo
-en vez de un string.
-La idea es que el "map" trabaje sobre cada linea de texto
-(no sobre cada caracter).
-No se puede usar el programa anterior.
-A continuación se muestra un esqueleto del programa que debe completar
-programando las funciones "fmap" y "freduce":
+Ejercicio 5 (promedio)
+======================
+Con el programa "mapReduce" calcule el promedio de una lista de numeros.
+
+A continuación se da un esqueleto del programa a completar:
 */
 
-def countCharFile (filePath: String) = {
+def promedio (nums: List[Double]) : Double = {
+    val datos = nums.map(n => ((), n))
 
-    import scala.io.Source
+    val fmap = (_ :Unit, n: Double) => List((n, 1))
+    val freduce = (n: Double, vs: List[Int]) => (n, vs.fold (0) (_+_))
 
-    val lines: List[String] = Source.fromFile(filePath).getLines.toList
-    val datos = lines.map(l => ((), l))
+    val mr = mapReduce (datos) (fmap) (freduce)
 
-    val fmap = (_: Unit, l: String) => (l.split("").map((_, 1))).toList
-    val freduce = (l: String, vs: List[Int]) => (l, vs.fold (0) (_+_))
-
-    mapReduce (datos) (fmap) (freduce)
+    //> mr
+    //> List[(Double, Int)] = List((num, ocurrences))
+    return mr.map(_._1).sum / mr.map(_._2).sum
 }
 
-var count_file = countCharFile("my_text.txt")
-println(count_file)
+// var average = promedio(List(1.0, 2.0, 3.0, 4.0, 5.0))
+var average = promedio(List(1.0, 1.0, 2.0, 2.0, 4.0))
+// (1, 2) (2, 2) (4, 1)
+println(average)
 
 
 /* Elian y Joni */
-// def countCharFile (filePath: String) = {
-//     import scala.io.Source
-//     val lines : List[String] = Source.fromFile(filePath).getLines.toList
-//     val datos = lines.map(l => ((), l))
-//     val fmap = (_ : Unit, l : String) => (l.toList.flatMap(kv => List((kv, 1))))
-//     val freduce = (c: Char, vs: List[Int]) => (c,vs.fold (0) (_+_))
-//     mapReduce (datos) (fmap) (freduce)
+// def promedio (nums: List[Double]) : Double = {
+//     val datos = nums.map(n => ((), n))
+
+//     val fmap = (_: Unit, num: Double) => List(((), (1, num)))
+//     val freduce = (_: Unit, num: List[(Int, Double)]) => num.fold ((0,0.0)) ((x: (Int, Double), y: (Int, Double)) => (x._1 + y._1, x._2 + y._2))
+//     val resMapRed = (mapReduce (datos) (fmap) (freduce))(0)
+//     return resMapRed._2 / resMapRed._1
 // }
-// countCharFile("/home/jonathan/Desktop/prueba.txt")
+// val a: List[Double] = List(1,2,3,4,5)
+// val r = promedio(a)
+
+
+
+// var mapeador : List[(Set[String], List[String])] = List()
+// mapeador +:= (Set("A", "B"), List("A", "B", "C"))
+// mapeador :+= (Set("B", "B"), List("A", "B", "C"))
+// mapeador
+
+// def fmap(persona:String, amigos:List[String])
+//     : List[(Set[String], List[String])] = {
+//     var mapeador : List[(Set[String], List[String])] = List()
+//     for (i <- amigos) mapeador +:= (Set(persona, i), amigos)
+//     mapeador
+// }

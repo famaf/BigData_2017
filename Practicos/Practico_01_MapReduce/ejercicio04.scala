@@ -68,41 +68,69 @@ def countChar (str: String) = {
 //=============================================================================
 
 /*
-Ejercicio 1
-===========
-En la celda siguiente modifique el programa anterior para que tome un archivo
-en vez de un string.
-La idea es que el "map" trabaje sobre cada linea de texto
-(no sobre cada caracter).
-No se puede usar el programa anterior.
-A continuación se muestra un esqueleto del programa que debe completar
-programando las funciones "fmap" y "freduce":
+Ejercicio 4 (word co-ocurrencia)
+================================
+En el siguiente ejercicio hay que construir la matriz de co-ocurrencia de
+palabras en una misma linea. Esta es una matriz simétrica "n*n" donde "n" es el
+número de palabras (sin repetición) en un texto. Para cada par de palabras
+(fila y columna de la matriz) se cuenta la cantidad de veces que ocurren ambas
+en una misma linea.
+
+Ayuda:
+Se puede hacer que la función "fmap" devuelva los pares ordenados de palabras
+en una misma linea con un contador igual a "1".
+Por ejemplo, en la linea "w1 w2 w3 w1" la función producirá:
+(w1, w2):1, (w1, w3):1, (w1, w1):1, (w2, w3):1, (w1, w2):1, (w1, w3):1
+
+La función "freduce" recolectaría estos valores para llenar cada elemento de
+la matriz.
+
+A continuación se da un esqueleto del programa a completar:
 */
 
-def countCharFile (filePath: String) = {
-
+def wordCoOcurrence (filePath: String) = {
     import scala.io.Source
 
     val lines: List[String] = Source.fromFile(filePath).getLines.toList
     val datos = lines.map(l => ((), l))
 
-    val fmap = (_: Unit, l: String) => (l.split("").map((_, 1))).toList
-    val freduce = (l: String, vs: List[Int]) => (l, vs.fold (0) (_+_))
+    def fmap (unit: Unit, l: String) : List[((String, String), Int)] = {
+        import collection.mutable
+
+        val word_list = l.split(" ").filter(! _.isEmpty)
+        val pair_list = mutable.ListBuffer[(String, String)]()
+
+        for (i <- 0 until word_list.length) {
+            for (j <- 0 until word_list.length) {
+                if (i < j) {
+                    pair_list += ((word_list(i), word_list(j)))
+                }
+            }
+        }
+
+        return pair_list.toList.map((_, 1))
+    }
+
+    val freduce = (pair_list: (String, String), vs: List[Int]) => (pair_list, vs.fold (0) (_+_))
 
     mapReduce (datos) (fmap) (freduce)
 }
 
-var count_file = countCharFile("my_text.txt")
-println(count_file)
+val word_coocurence = wordCoOcurrence("my_text.txt")
+println(word_coocurence)
 
 
 /* Elian y Joni */
-// def countCharFile (filePath: String) = {
+// def wordCoOcurrence (filePath: String) = {
 //     import scala.io.Source
 //     val lines : List[String] = Source.fromFile(filePath).getLines.toList
-//     val datos = lines.map(l => ((), l))
-//     val fmap = (_ : Unit, l : String) => (l.toList.flatMap(kv => List((kv, 1))))
-//     val freduce = (c: Char, vs: List[Int]) => (c,vs.fold (0) (_+_))
-//     mapReduce (datos) (fmap) (freduce)
+//     val words = lines.map(l => ((), l.split(" ").toList))
+
+//     val fmap = (_: Unit, line:List[String]) => (for (i <- 0 until line.length) yield for (j <- i+1 until line.length) yield ((line(i), line(j)), 1)).toList.flatten
+//     val freduce = (coOcurr: (String, String), vs:List[Int]) => (coOcurr, vs.fold (0) (_+_))
+
+//     mapReduce (words) (fmap) (freduce)
 // }
-// countCharFile("/home/jonathan/Desktop/prueba.txt")
+// wordCoOcurrence("/home/jonathan/Desktop/prueba.txt")
+
+// //val res = fmap((), l)

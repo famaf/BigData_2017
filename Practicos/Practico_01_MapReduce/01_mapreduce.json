@@ -1,0 +1,705 @@
+{
+  "paragraphs": [
+    {
+      "text": "val baseDir\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/03_rdd_notebook\"\nprint(\"\"\"%html\n\u003ccenter\u003e\n    \u003ch1\u003eProgramación Distribuida sobre Grandes Volúmenes de Datos\u003c/h1\u003e\n\u003c/center\u003e\n\n\u003cbr\u003e\n\n\u003ch3 style\u003d\"text-align:center;\"\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    Facultad de Matemática Astronomía Física y Computación\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ca href\u003d\"http://www.unc.edu.ar\"\u003e\n    Universidad Nacional de Córdoba\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ccenter\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    \u003cimg src\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt\u003d\"Drawing\" style\u003d\"width:50%;\"/\u003e\n    \u003c/a\u003e\n    \u003c/center\u003e\n\u003c/h3\u003e\n\n\u003ch4 style\u003d\"text-align:center;\"\u003e Damián Barsotti  \u003c/h4\u003e\n\n\u003cp style\u003d\"font-size:15px;\"\u003e\n    \u003cbr /\u003e\n        This work is licensed under a\n        \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003eCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International License\u003c/a\u003e.\n    \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003e\n        \u003cimg alt\u003d\"Creative Commons License\" style\u003d\"border-width:0;vertical-align:middle;float:right\" src\u003d\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /\u003e\n    \u003c/a\u003e\n\u003c/p\u003e\n\"\"\")\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ccenter\u003e\n    \u003ch1\u003eProgramación Distribuida sobre Grandes Volúmenes de Datos\u003c/h1\u003e\n\u003c/center\u003e\n\n\u003cbr\u003e\n\n\u003ch3 style\u003d\"text-align:center;\"\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    Facultad de Matemática Astronomía Física y Computación\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ca href\u003d\"http://www.unc.edu.ar\"\u003e\n    Universidad Nacional de Córdoba\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ccenter\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    \u003cimg src\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt\u003d\"Drawing\" style\u003d\"width:50%;\"/\u003e\n    \u003c/a\u003e\n    \u003c/center\u003e\n\u003c/h3\u003e\n\n\u003ch4 style\u003d\"text-align:center;\"\u003e Damián Barsotti  \u003c/h4\u003e\n\n\u003cp style\u003d\"font-size:15px;\"\u003e\n    \u003cbr /\u003e\n        This work is licensed under a\n        \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003eCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International License\u003c/a\u003e.\n    \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003e\n        \u003cimg alt\u003d\"Creative Commons License\" style\u003d\"border-width:0;vertical-align:middle;float:right\" src\u003d\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /\u003e\n    \u003c/a\u003e\n\u003c/p\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497228_-2082104164",
+      "id": "20160720-131723_1132815368",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Práctico 1 \n\n## MapReduce\n\nEn este práctico se desarrollarán ejercicios para implementar algunos algoritmos MapReduce. Además se practicará la construcción de programas en Scala.\nPara hacer el práctico tener en cuenta:\n* Se recomienda fuertemente haber hecho el tutorial de Scala.\n* Para correr los programa debe usar **[`Shift`]-[`Enter`]** o cliquear el triangulito arriba a la derecha de la celda (RUN).\n* Para hacer copy and paste desde el notebook seleccionar con **[`Ctrl`]-[flechitas]** y hacer **[`Ctrl`]-[`c`]** y **[`Ctrl`]-[`v`]**.\n\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch1\u003ePráctico 1\u003c/h1\u003e\n\u003ch2\u003eMapReduce\u003c/h2\u003e\n\u003cp\u003eEn este práctico se desarrollarán ejercicios para implementar algunos algoritmos MapReduce. Además se practicará la construcción de programas en Scala.\n\u003cbr  /\u003ePara hacer el práctico tener en cuenta:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eSe recomienda fuertemente haber hecho el tutorial de Scala.\u003c/li\u003e\n\u003cli\u003ePara correr los programa debe usar \u003cstrong\u003e[\u003ccode\u003eShift\u003c/code\u003e]-[\u003ccode\u003eEnter\u003c/code\u003e]\u003c/strong\u003e o cliquear el triangulito arriba a la derecha de la celda (RUN).\u003c/li\u003e\n\u003cli\u003ePara hacer copy and paste desde el notebook seleccionar con \u003cstrong\u003e[\u003ccode\u003eCtrl\u003c/code\u003e]-[flechitas]\u003c/strong\u003e y hacer \u003cstrong\u003e[\u003ccode\u003eCtrl\u003c/code\u003e]-[\u003ccode\u003ec\u003c/code\u003e]\u003c/strong\u003e y \u003cstrong\u003e[\u003ccode\u003eCtrl\u003c/code\u003e]-[\u003ccode\u003ev\u003c/code\u003e]\u003c/strong\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497229_-2082488913",
+      "id": "20160615-144959_2134148107",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Implementación naif del patrón MapReduce\n\nA continuación se dará una implementación muy simple del patrón en Scala. La misma corre solo en una máquina, sin file system distribuido y solo nos servirá para practicar su uso.\nLea el código y trate de entenderlo. Comparelo también con la presentación en clase del tema. Cualquier duda consulte un docente.\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eImplementación naif del patrón MapReduce\u003c/h3\u003e\n\u003cp\u003eA continuación se dará una implementación muy simple del patrón en Scala. La misma corre solo en una máquina, sin file system distribuido y solo nos servirá para practicar su uso.\u003cbr/\u003eLea el código y trate de entenderlo. Comparelo también con la presentación en clase del tema. Cualquier duda consulte un docente.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497230_-2081334666",
+      "id": "20160615-145043_1018834183",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Funcion map comun pero que devuelve lista de pares (clave,valor)\ndef elMap[Kin,Vin,Kout,Vout]\n    (datosIn: List[(Kin,Vin)])\n    (fmap : (Kin,Vin) \u003d\u003e List[(Kout,Vout)])\n    : List[(Kout,Vout)]\n    \u003d datosIn.flatMap(kv \u003d\u003e fmap(kv._1,kv._2)) // Cannot use just f, something wierd with implicits\n\n// Agrupa los valores que tienen clave comun\ndef agrupa[Kout,Vout]\n    (kvs : List[(Kout,Vout)])\n    : Map[Kout,List[Vout]]\n    \u003d kvs.groupBy(_._1).mapValues(_.unzip._2)\n\n//    \u003d kvs.groupBy(_._1).mapValues(_.map(_.2))\n\n// Para cada clave aplico una operacion a su lista de valores\ndef reduce[Kout,Vout,VFin]\n    (kvss : Map[Kout,List[Vout]])\n    (freduce : (Kout,  List[Vout]) \u003d\u003e VFin)\n    : List[VFin]\n    \u003d kvss.map({case (k,vs) \u003d\u003e freduce(k,vs)}).toList\n\n//Junto todo\ndef mapReduce[Kin,Vin,Kout,Vout,VFin]\n    (datosIn: List[(Kin,Vin)])\n    (fmap : (Kin,Vin) \u003d\u003e List[(Kout,Vout)])\n    (freduce : (Kout,  List[Vout]) \u003d\u003e VFin)\n    : List[VFin]\n    \u003d {\n        val resMap \u003d elMap (datosIn) (fmap)\n        val resAgrupo  \u003d agrupa(resMap)\n        val resReduce \u003d reduce (resAgrupo) (freduce)\n        return resReduce\n    }",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497230_-2081334666",
+      "id": "20160615-145341_501086069",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Pequeño ejemplo de uso\n\nA continuación se verá la implementación em MapReduce del algoritmo que encuentra la cantidad de apariciones de cada letra (visto en clase).\nPruebe ejecutarlo llamando a la función `countChar` con un `String` cualquiera.",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003ePequeño ejemplo de uso\u003c/h3\u003e\n\u003cp\u003eA continuación se verá la implementación em MapReduce del algoritmo que encuentra la cantidad de apariciones de cada letra (visto en clase).\u003cbr/\u003ePruebe ejecutarlo llamando a la función \u003ccode\u003ecountChar\u003c/code\u003e con un \u003ccode\u003eString\u003c/code\u003e cualquiera.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497232_-2071331195",
+      "id": "20160615-150406_526670902",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Cuento cantidad de veces que aparece cada letra\n// \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\ndef countChar (str: String) \u003d {\n    val datos \u003d str.toList.map(c \u003d\u003e ((),c))\n    val fmap \u003d (_ : Unit, c : Char) \u003d\u003e List((c,1))\n    val freduce \u003d (c: Char, vs: List[Int]) \u003d\u003e (c,vs.fold (0) (_+_))\n    mapReduce (datos) (fmap) (freduce)\n}",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497233_-2071715944",
+      "id": "20160615-151707_1876187925",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio ~\n\nEn la celda siguiente modifique el programa anterior para que tome un archivo en vez de un string.\nLa idea es que el `map` trabaje sobre cada linea de texto (no sobre cada caracter).\nNo se puede usar el programa anterior.\nA continuación se muestra un esqueleto del programa que debe completar programando las funciones `fmap` y `freduce`:\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio ~\u003c/h3\u003e\n\u003cp\u003eEn la celda siguiente modifique el programa anterior para que tome un archivo en vez de un string.\u003cbr/\u003eLa idea es que el \u003ccode\u003emap\u003c/code\u003e trabaje sobre cada linea de texto (no sobre cada caracter).\u003cbr/\u003eNo se puede usar el programa anterior.\u003cbr/\u003eA continuación se muestra un esqueleto del programa que debe completar programando las funciones \u003ccode\u003efmap\u003c/code\u003e y \u003ccode\u003efreduce\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497234_-2070561697",
+      "id": "20160615-152433_20160637",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def countCharFile (filePath: String) \u003d {\n    \nimport scala.io.Source\n\n    val lines : List[String] \u003d Source.fromFile(filePath).getLines.toList\n    val datos \u003d lines.map(l \u003d\u003e ((),l))\n    val fmap \u003d (_ : Unit, l : String) \u003d\u003e ...\n    val freduce \u003d (c: Char, vs: List[Int]) \u003d\u003e ...\n    mapReduce (datos) (fmap) (freduce)\n}",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497235_-2070946446",
+      "id": "20160615-154328_239768480",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio ~ (wordCount)\n\nHacer un programa que calcule la cantidad de veces que aparece cada palabra (no vacía) en un archivo.\nA continuación se muestra un esqueleto del programa que debe completar programando las funciones `fmap` y `freduce`.\n\n#### Ayuda\n\n* Para dividir un `String` en palabras se puede usar el método `split`.\n* Para filtrar elementos de una lista se puede usar el método `filter`. \n* Para ver si un `String` no es vacío se puede usar `! _.isEmpty`",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio ~ (wordCount)\u003c/h3\u003e\n\u003cp\u003eHacer un programa que calcule la cantidad de veces que aparece cada palabra (no vacía) en un archivo.\u003cbr/\u003eA continuación se muestra un esqueleto del programa que debe completar programando las funciones \u003ccode\u003efmap\u003c/code\u003e y \u003ccode\u003efreduce\u003c/code\u003e.\u003c/p\u003e\n\u003ch4\u003eAyuda\u003c/h4\u003e\n\u003cul\u003e\n  \u003cli\u003ePara dividir un \u003ccode\u003eString\u003c/code\u003e en palabras se puede usar el método \u003ccode\u003esplit\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003ePara filtrar elementos de una lista se puede usar el método \u003ccode\u003efilter\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003ePara ver si un \u003ccode\u003eString\u003c/code\u003e no es vacío se puede usar \u003ccode\u003e! _.isEmpty\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497236_-2072870191",
+      "id": "20160616-110119_1095838749",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def wordCount (filePath: String) \u003d {\n\nimport scala.io.Source\n\n    val lines : List[String] \u003d Source.fromFile(filePath).getLines.toList\n    val datos \u003d lines.map(l \u003d\u003e ((),l))\n\n    val fmap \u003d (_ : Unit, l : String) \u003d\u003e ...\n    val freduce \u003d (w: String, vs: List[Int]) \u003d\u003e ...\n\n    mapReduce (datos) (fmap) (freduce)\n}",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497237_-2073254939",
+      "id": "20160616-110138_1909742592",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio ~ (amigos en común)\n\nDada una lista de tuplas, donde el primer elemento es una persona y el segundo una lista de sus amigos, hacer un programa con `mapReduce` que devuelve la lista de amigos en común de todos los pares de **amigos** posibles.\nLa lista de amigos se almacena de la siguiente forma:\n```scala\nval amigosDe \u003d List(  (\"A\", List(\"B\", \"C\", \"D\"))\n                    , (\"B\", List(\"A\", \"C\", \"D\", \"E\"))\n                    , (\"C\", List(\"A\", \"B\", \"D\", \"E\"))\n                    , (\"D\", List(\"A\", \"B\", \"C\", \"E\"))\n                    , (\"E\", List(\"B\", \"C\", \"D\"))      )\n```\nVer que la relación de amistad tiene que ser simétrica.\n#### Ayuda\nPara cada par `(p,ams)` de la lista de entrada la función `map` puede devolver todas las tuplas posible `({p,am},ams)` donde `{p,am}` es un conjunto de dos persona y `am` es un elemento de `ams`.\nVer que en estos resultados deben aparecer exactamente dos tuplas cuyos primeros elementos (conjunto `{p,am}`) son iguales.\nA partir de esta observación los amigos en común son la intersección de las segundas componentes de ambas tuplas.\nA continuación se da un esqueleto del programa a completar:\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 409.05,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio ~ (amigos en común)\u003c/h3\u003e\n\u003cp\u003eDada una lista de tuplas, donde el primer elemento es una persona y el segundo una lista de sus amigos, hacer un programa con \u003ccode\u003emapReduce\u003c/code\u003e que devuelve la lista de amigos en común de todos los pares de \u003cstrong\u003eamigos\u003c/strong\u003e posibles.\u003cbr/\u003eLa lista de amigos se almacena de la siguiente forma:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003eval amigosDe \u003d List(  (\u0026quot;A\u0026quot;, List(\u0026quot;B\u0026quot;, \u0026quot;C\u0026quot;, \u0026quot;D\u0026quot;))\n                    , (\u0026quot;B\u0026quot;, List(\u0026quot;A\u0026quot;, \u0026quot;C\u0026quot;, \u0026quot;D\u0026quot;, \u0026quot;E\u0026quot;))\n                    , (\u0026quot;C\u0026quot;, List(\u0026quot;A\u0026quot;, \u0026quot;B\u0026quot;, \u0026quot;D\u0026quot;, \u0026quot;E\u0026quot;))\n                    , (\u0026quot;D\u0026quot;, List(\u0026quot;A\u0026quot;, \u0026quot;B\u0026quot;, \u0026quot;C\u0026quot;, \u0026quot;E\u0026quot;))\n                    , (\u0026quot;E\u0026quot;, List(\u0026quot;B\u0026quot;, \u0026quot;C\u0026quot;, \u0026quot;D\u0026quot;))      )\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eVer que la relación de amistad tiene que ser simétrica.\u003c/p\u003e\n\u003ch4\u003eAyuda\u003c/h4\u003e\n\u003cp\u003ePara cada par \u003ccode\u003e(p,ams)\u003c/code\u003e de la lista de entrada la función \u003ccode\u003emap\u003c/code\u003e puede devolver todas las tuplas posible \u003ccode\u003e({p,am},ams)\u003c/code\u003e donde \u003ccode\u003e{p,am}\u003c/code\u003e es un conjunto de dos persona y \u003ccode\u003eam\u003c/code\u003e es un elemento de \u003ccode\u003eams\u003c/code\u003e.\u003cbr/\u003eVer que en estos resultados deben aparecer exactamente dos tuplas cuyos primeros elementos (conjunto \u003ccode\u003e{p,am}\u003c/code\u003e) son iguales.\u003cbr/\u003eA partir de esta observación los amigos en común son la intersección de las segundas componentes de ambas tuplas.\u003cbr/\u003eA continuación se da un esqueleto del programa a completar:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497238_-2072100693",
+      "id": "20160616-144311_939960850",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def amigosEnComun(ade: List[(String,List[String])]) \u003d {\n ...\n}",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497239_-2072485442",
+      "id": "20160616-144334_1113097282",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio ~ (word co-ocurrencia)\nEn el siguiente ejercicio hay que construir la matriz de *co-ocurrencia* de palabras en una misma linea. Esta es una matriz simétrica `n*n` donde `n` es el número de palabras (sin repetición) en un texto. Para cada par de palabres (fila y columna de la matriz) se cuenta la cantidad de veces que ocurren ambas en una misma linea.\n\n#### Ayuda\nSe puede hacer que la función `fmap` devuelva los pares ordenados de palabras en una misma linea con un contador igual a `1`. Por ejemplo, en la linea `w1 w2 w3 w1` la función producirá: \n`(w1,w2):1, (w1, w3):1, (w1,w1):1, (w2,w3):1, (w1,w2):1, (w1,w3):1`\n\nLa función `freduce` recolectaría estos valores para llenar cada elemento de la matriz.\n\nA continuación se da un esqueleto del programa a completar:",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio ~ (word co-ocurrencia)\u003c/h3\u003e\n\u003cp\u003eEn el siguiente ejercicio hay que construir la matriz de \u003cem\u003eco-ocurrencia\u003c/em\u003e de palabras en una misma linea. Esta es una matriz simétrica \u003ccode\u003en*n\u003c/code\u003e donde \u003ccode\u003en\u003c/code\u003e es el número de palabras (sin repetición) en un texto. Para cada par de palabres (fila y columna de la matriz) se cuenta la cantidad de veces que ocurren ambas en una misma linea.\u003c/p\u003e\n\u003ch4\u003eAyuda\u003c/h4\u003e\n\u003cp\u003eSe puede hacer que la función \u003ccode\u003efmap\u003c/code\u003e devuelva los pares ordenados de palabras en una misma linea con un contador igual a \u003ccode\u003e1\u003c/code\u003e. Por ejemplo, en la linea \u003ccode\u003ew1 w2 w3 w1\u003c/code\u003e la función producirá:\u003cbr/\u003e\u003ccode\u003e(w1,w2):1, (w1, w3):1, (w1,w1):1, (w2,w3):1, (w1,w2):1, (w1,w3):1\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eLa función \u003ccode\u003efreduce\u003c/code\u003e recolectaría estos valores para llenar cada elemento de la matriz.\u003c/p\u003e\n\u003cp\u003eA continuación se da un esqueleto del programa a completar:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497240_-2074409186",
+      "id": "20160616-165559_153544464",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def wordCoOcurrence (filePath: String) \u003d {\n\n   ...\n    mapReduce (datos) (fmap) (freduce)\n}\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497241_-2074793935",
+      "id": "20160616-165637_456865360",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio ~ (promedio)\n\nCon el programa `mapReduce` calcule el promedio de una lista de numeros.\n\nA continuación se da un esqueleto del programa a completar:\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio ~ (promedio)\u003c/h3\u003e\n\u003cp\u003eCon el programa \u003ccode\u003emapReduce\u003c/code\u003e calcule el promedio de una lista de numeros.\u003c/p\u003e\n\u003cp\u003eA continuación se da un esqueleto del programa a completar:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497242_-2073639688",
+      "id": "20170823-103411_1291391962",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def promedio (nums: List[Double]) : Double \u003d {\n\n    ...\n    ... mapReduce (datos) (fmap) (freduce)\n    return ...\n}\n",
+      "dateUpdated": "Aug 23, 2017 11:12:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497243_-2074024437",
+      "id": "20170823-103440_918535335",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "FIN",
+      "text": "println(\"\"\"%html\n\u003cscript\u003e\n    var heads \u003d document.getElementsByTagName(\u0027h3\u0027);\n    var numHeads \u003d heads.length;\n    var inner \u003d \"\";\n    var i \u003d 0;\n    var j \u003d 0;\n    while (i \u003c numHeads){\n        inner \u003d heads[i].innerHTML;\n        if (inner.search(\"Ejercicio\") !\u003d -1 ) {\n            j++;\n            heads[i].innerHTML \u003d inner.replace(/Ejercicio (~|\\d+)/,\"Ejercicio \"+j);\n        }\n        i++\n    }\n\u003c/script\u003e\n\"\"\")\n",
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "title": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cscript\u003e\n    var heads \u003d document.getElementsByTagName(\u0027h3\u0027);\n    var numHeads \u003d heads.length;\n    var inner \u003d \"\";\n    var i \u003d 0;\n    var j \u003d 0;\n    while (i \u003c numHeads){\n        inner \u003d heads[i].innerHTML;\n        if (inner.search(\"Ejercicio\") !\u003d -1 ) {\n            j++;\n            heads[i].innerHTML \u003d inner.replace(/Ejercicio (~|\\d+)/,\"Ejercicio \"+j);\n        }\n        i++\n    }\n\u003c/script\u003e\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497244_-2075948182",
+      "id": "20160616-171626_2027424644",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "dateUpdated": "Aug 23, 2017 11:11:37 AM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1503497497244_-2075948182",
+      "id": "20160830-114323_344385570",
+      "dateCreated": "Aug 23, 2017 11:11:37 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Práctico 1 - MapReduce",
+  "id": "2CRTN8YTZ",
+  "angularObjects": {
+    "2CQ7Q55BQ:shared_process": [],
+    "2CPUE4GGG:shared_process": [],
+    "2CQRCMNAC:shared_process": [],
+    "2CQ2H39EN:shared_process": [],
+    "2CPQA23CZ:shared_process": [],
+    "2CRRAQSF3:shared_process": [],
+    "2CS7KDD6D:shared_process": [],
+    "2CPD18FDM:shared_process": [],
+    "2CP1T142A:shared_process": [],
+    "2CQCJJ1DJ:shared_process": [],
+    "2CP6REQ3K:shared_process": [],
+    "2CQMFA36B:shared_process": [],
+    "2CRFETAR7:shared_process": [],
+    "2CRRVRQS8:shared_process": [],
+    "2CR95P7T6:shared_process": [],
+    "2CS3PG24P:shared_process": [],
+    "2CP4WAVXS:shared_process": [],
+    "2CRANHSBB:shared_process": [],
+    "2CRUUNK8B:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

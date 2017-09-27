@@ -1,0 +1,266 @@
+{
+  "paragraphs": [
+    {
+      "text": "val baseDir\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/03_rdd_notebook\"\nprint(\"\"\"%html\n\u003ccenter\u003e\n    \u003ch1\u003eProgramación Distribuida sobre Grandes Volúmenes de Datos\u003c/h1\u003e\n\u003c/center\u003e\n\n\u003cbr\u003e\n\n\u003ch3 style\u003d\"text-align:center;\"\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    Facultad de Matemática Astronomía Física y Computación\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ca href\u003d\"http://www.unc.edu.ar\"\u003e\n    Universidad Nacional de Córdoba\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ccenter\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    \u003cimg src\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt\u003d\"Drawing\" style\u003d\"width:50%;\"/\u003e\n    \u003c/a\u003e\n    \u003c/center\u003e\n\u003c/h3\u003e\n\n\u003ch4 style\u003d\"text-align:center;\"\u003e Damián Barsotti - Ezequiel Orbe \u003c/h4\u003e\n\n\u003cp style\u003d\"font-size:15px;\"\u003e\n    \u003cbr /\u003e\n        This work is licensed under a\n        \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003eCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International License\u003c/a\u003e.\n    \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003e\n        \u003cimg alt\u003d\"Creative Commons License\" style\u003d\"border-width:0;vertical-align:middle;float:right\" src\u003d\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /\u003e\n    \u003c/a\u003e\n\u003c/p\u003e\n\"\"\")",
+      "dateUpdated": "Sep 22, 2017 6:09:42 PM",
+      "config": {
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ccenter\u003e\n    \u003ch1\u003eProgramación Distribuida sobre Grandes Volúmenes de Datos\u003c/h1\u003e\n\u003c/center\u003e\n\n\u003cbr\u003e\n\n\u003ch3 style\u003d\"text-align:center;\"\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    Facultad de Matemática Astronomía Física y Computación\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ca href\u003d\"http://www.unc.edu.ar\"\u003e\n    Universidad Nacional de Córdoba\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ccenter\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    \u003cimg src\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt\u003d\"Drawing\" style\u003d\"width:50%;\"/\u003e\n    \u003c/a\u003e\n    \u003c/center\u003e\n\u003c/h3\u003e\n\n\u003ch4 style\u003d\"text-align:center;\"\u003e Damián Barsotti - Ezequiel Orbe \u003c/h4\u003e\n\n\u003cp style\u003d\"font-size:15px;\"\u003e\n    \u003cbr /\u003e\n        This work is licensed under a\n        \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003eCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International License\u003c/a\u003e.\n    \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003e\n        \u003cimg alt\u003d\"Creative Commons License\" style\u003d\"border-width:0;vertical-align:middle;float:right\" src\u003d\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /\u003e\n    \u003c/a\u003e\n\u003c/p\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1506114582477_-256487304",
+      "id": "20160905-160017_311070424",
+      "dateCreated": "Sep 22, 2017 6:09:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n###Ejercicio 1\nHacer un programa que calcule las 10 palabras, con mas de 3 caracteres, mas frecuentes en el `README`.",
+      "dateUpdated": "Sep 22, 2017 6:09:42 PM",
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eEjercicio 1\u003c/h3\u003e\n\u003cp\u003eHacer un programa que calcule las 10 palabras, con mas de 3 caracteres, mas frecuentes en el \u003ccode\u003eREADME\u003c/code\u003e.\u003c/p\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1506114582494_-249177075",
+      "id": "20160905-160017_1185419370",
+      "dateCreated": "Sep 22, 2017 6:09:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n###Ejercicio 2\nDada las siguientes collecciones de pares de elementos:\n\n```\n(\"a\",1),(\"b\",4)\n(\"a\",2),(\"b\",2), (\"c\",5), (\"a\",7)\n(\"a\",2),(\"b\",2), (\"c\",5)\n```\nCalcule la suma total para cada key usando `cogroup`.\n\n```\n(a,12)\n(b,8)\n(c,10)\n```\n\n",
+      "dateUpdated": "Sep 22, 2017 6:09:42 PM",
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eEjercicio 2\u003c/h3\u003e\n\u003cp\u003eDada las siguientes collecciones de pares de elementos:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e(\"a\",1),(\"b\",4)\n(\"a\",2),(\"b\",2), (\"c\",5), (\"a\",7)\n(\"a\",2),(\"b\",2), (\"c\",5)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eCalcule la suma total para cada key usando \u003ccode\u003ecogroup\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e(a,12)\n(b,8)\n(c,10)\n\u003c/code\u003e\u003c/pre\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1506114582498_-263028035",
+      "id": "20160905-160017_1137558371",
+      "dateCreated": "Sep 22, 2017 6:09:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n###Ejercicio 3\nRepita el ejercicio anterior usando `union`",
+      "dateUpdated": "Sep 22, 2017 6:09:42 PM",
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eEjercicio 3\u003c/h3\u003e\n\u003cp\u003eRepita el ejercicio anterior usando \u003ccode\u003eunion\u003c/code\u003e\u003c/p\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1506114582500_-265336529",
+      "id": "20160905-160017_2044115803",
+      "dateCreated": "Sep 22, 2017 6:09:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio 4\n\n[DBPedia](http://wiki.dbpedia.org/) es una síntesis estructurada de las relaciones que aparecen en la Wikipedia.\nEstructura sus datos en 2 tipos de archivos:\n* **Propiedades** - Archivo que contiene 3-uplas con (sujeto,relación,predicado), por ejemplo (Aristoteles, Año de nacimiento, -384)\n* **Tipos** - Archivo que contiene 3-uplas con (sujeto, sintaxis de tipo, tipo del sujeto).\n\nEn los *Archivos de prueba* de la materia hay extractos de los mismos (`mappingbased_properties_en.nt` y `instance_types_en.nt`).\n\nAnalizar el formato de estos archivos sanearlos para crear los RDD teniendo en cuenta que:\n* no se pueden modificar a mano los archivos.\n* puede haber lineas basura. Son las que no comienzan con el caracter `\u003c`\n* puede haber lineas en blanco.\n* cada linea termina con un punto que hay que descartar.\n* un sujeto puede aparecer en varias lineas con distintas relacion/predicado en `mappingbased_properties_en.nt`\n* un sujeto puede tener varios tipos en `instance_types_en.nt`.\n* La sintaxis de tipo en el archivo `instance_types_en.nt` no hay que tenerla en cuenta en el algoritmo.\n\nEl programa debe producir una salida que agregue a las propiedades los tipos del sujeto como una lista, de forma tal que cada linea tenga la información de la 4-upla (sujeto, [tipos del sujeto], relación, predicado).\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Sep 22, 2017 6:27:02 PM",
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio 4\u003c/h3\u003e\n\u003cp\u003e\u003ca href\u003d\"http://wiki.dbpedia.org/\"\u003eDBPedia\u003c/a\u003e es una síntesis estructurada de las relaciones que aparecen en la Wikipedia.\u003cbr/\u003eEstructura sus datos en 2 tipos de archivos:\u003cbr/\u003e* \u003cstrong\u003ePropiedades\u003c/strong\u003e - Archivo que contiene 3-uplas con (sujeto,relación,predicado), por ejemplo (Aristoteles, Año de nacimiento, -384)\u003cbr/\u003e* \u003cstrong\u003eTipos\u003c/strong\u003e - Archivo que contiene 3-uplas con (sujeto, sintaxis de tipo, tipo del sujeto).\u003c/p\u003e\n\u003cp\u003eEn los \u003cem\u003eArchivos de prueba\u003c/em\u003e de la materia hay extractos de los mismos (\u003ccode\u003emappingbased_properties_en.nt\u003c/code\u003e y \u003ccode\u003einstance_types_en.nt\u003c/code\u003e).\u003c/p\u003e\n\u003cp\u003eAnalizar el formato de estos archivos sanearlos para crear los RDD teniendo en cuenta que:\u003cbr/\u003e* no se pueden modificar a mano los archivos.\u003cbr/\u003e* puede haber lineas basura. Son las que no comienzan con el caracter \u003ccode\u003e\u0026lt;\u003c/code\u003e\u003cbr/\u003e* puede haber lineas en blanco.\u003cbr/\u003e* cada linea termina con un punto que hay que descartar.\u003cbr/\u003e* un sujeto puede aparecer en varias lineas con distintas relacion/predicado en \u003ccode\u003emappingbased_properties_en.nt\u003c/code\u003e\u003cbr/\u003e* un sujeto puede tener varios tipos en \u003ccode\u003einstance_types_en.nt\u003c/code\u003e.\u003cbr/\u003e* La sintaxis de tipo en el archivo \u003ccode\u003einstance_types_en.nt\u003c/code\u003e no hay que tenerla en cuenta en el algoritmo.\u003c/p\u003e\n\u003cp\u003eEl programa debe producir una salida que agregue a las propiedades los tipos del sujeto como una lista, de forma tal que cada linea tenga la información de la 4-upla (sujeto, [tipos del sujeto], relación, predicado).\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1506114582503_-264951780",
+      "id": "20160905-160017_934396210",
+      "dateCreated": "Sep 22, 2017 6:09:42 PM",
+      "dateStarted": "Sep 22, 2017 6:27:02 PM",
+      "dateFinished": "Sep 22, 2017 6:27:03 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "dateUpdated": "Sep 22, 2017 6:09:42 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1506114582509_-268799269",
+      "id": "20160905-173543_424151923",
+      "dateCreated": "Sep 22, 2017 6:09:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Práctico 3 - Key Value RDD\u0027s",
+  "id": "2CT52ZH88",
+  "angularObjects": {
+    "2CQ7Q55BQ:shared_process": [],
+    "2CPUE4GGG:shared_process": [],
+    "2CQRCMNAC:shared_process": [],
+    "2CQ2H39EN:shared_process": [],
+    "2CPQA23CZ:shared_process": [],
+    "2CRRAQSF3:shared_process": [],
+    "2CS7KDD6D:shared_process": [],
+    "2CPD18FDM:shared_process": [],
+    "2CP1T142A:shared_process": [],
+    "2CQCJJ1DJ:shared_process": [],
+    "2CP6REQ3K:shared_process": [],
+    "2CQMFA36B:shared_process": [],
+    "2CRFETAR7:shared_process": [],
+    "2CRRVRQS8:shared_process": [],
+    "2CR95P7T6:shared_process": [],
+    "2CS3PG24P:shared_process": [],
+    "2CP4WAVXS:shared_process": [],
+    "2CRANHSBB:shared_process": [],
+    "2CRUUNK8B:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

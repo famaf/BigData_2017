@@ -68,41 +68,46 @@ def countChar (str: String) = {
 //=============================================================================
 
 /*
-Ejercicio 1
-===========
-En la celda siguiente modifique el programa anterior para que tome un archivo
-en vez de un string.
-La idea es que el "map" trabaje sobre cada linea de texto
-(no sobre cada caracter).
-No se puede usar el programa anterior.
+Ejercicio 2 (wordCount)
+=======================
+Hacer un programa que calcule la cantidad de veces que aparece cada palabra
+(no vacía) en un archivo.
 A continuación se muestra un esqueleto del programa que debe completar
-programando las funciones "fmap" y "freduce":
+programando las funciones "fmap" y "freduce".
+
+Ayuda:
+* Para dividir un String en palabras se puede usar el método "split".
+* Para filtrar elementos de una lista se puede usar el método "filter".
+* Para ver si un String no es vacío se puede usar "! _.isEmpty"
 */
 
-def countCharFile (filePath: String) = {
-
+def wordCount (filePath: String) = {
     import scala.io.Source
 
     val lines: List[String] = Source.fromFile(filePath).getLines.toList
     val datos = lines.map(l => ((), l))
 
-    val fmap = (_: Unit, l: String) => (l.split("").map((_, 1))).toList
-    val freduce = (l: String, vs: List[Int]) => (l, vs.fold (0) (_+_))
+    // Otra forma
+    //val fmap = (_: Unit, l: String) => (l.split(" +").map((_, 1))).toList
+    val fmap = (_: Unit, l: String) => (l.split(" ").filter(! _.isEmpty).map((_, 1))).toList
+    val freduce = (w: String, vs: List[Int]) => (w, vs.fold (0) (_+_))
 
     mapReduce (datos) (fmap) (freduce)
 }
 
-var count_file = countCharFile("my_text.txt")
-println(count_file)
+var count_word = wordCount("my_text.txt")
+println(count_word)
 
 
 /* Elian y Joni */
-// def countCharFile (filePath: String) = {
+// def wordCount (filePath: String) = {
 //     import scala.io.Source
 //     val lines : List[String] = Source.fromFile(filePath).getLines.toList
-//     val datos = lines.map(l => ((), l))
-//     val fmap = (_ : Unit, l : String) => (l.toList.flatMap(kv => List((kv, 1))))
-//     val freduce = (c: Char, vs: List[Int]) => (c,vs.fold (0) (_+_))
+//     val datos = lines.map(l => ((),l))
+
+//     val fmap = (_ : Unit, l : String) => l.split(" ").toList.map(s => (s, 1))
+//     val freduce = (w: String, vs: List[Int]) => (w, vs.fold (0) (_+_))
+
 //     mapReduce (datos) (fmap) (freduce)
 // }
-// countCharFile("/home/jonathan/Desktop/prueba.txt")
+// wordCount("/home/jonathan/Desktop/prueba.txt")
