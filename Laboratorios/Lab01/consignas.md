@@ -20,8 +20,10 @@ Para este laboratorio usaremos un dataset, que contiene el log de descargas de S
 
 ## Consignas
 
-* **Fecha de Entrega:**
-* **Formato de entrega:** Se debe comitear al repositorio del grupo el notebook de Zeppelin con el tag `lab-1`.
+* **Fecha de Entrega:** 4/10/2017 a las 12 de la noche.
+* **Formato de entrega:** Se debe comitear al repositorio del grupo el notebook de Zeppelin con el tag `lab-1`. 
+  En [lab-1.json](https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/laboratorios/lab-1/lab-1.json) hay un esqueleto de notebook para completar.
+  Utilizar Zeppelin version 0.7.3.
 * **Restricciones:** Solo se pueden utilizar RDDs. 
 
 ## Análisis: Primera Etapa
@@ -96,11 +98,14 @@ En [2], además de los logs, existe un pequeño dataset en formato CSV, llamado 
 	/** Carga un archivo contiene el mapeo prefix -> publisher.
 	*  
 	*  @param 	file					Path al archivo.
-	*  @return	RDD[(String,String)] 	
+	*  @return	Map[String,String] 	
 	*/
 	def loadPrefixMapping(file : String) : RDD[(String, String)]
 	```
-**Recomendación:** Si tiene problemas para parsear el CSV no dude en utilizar alguna librería especifica para dicha tarea, como ser [Opencsv](http://opencsv.sourceforge.net/). En el libro "Learning Spark - Lightning-Fast Big Data Analysis" capitulo 5 pag. 77 se explica como hacerlo.
+
+
+**Recomendación:** Si tiene problemas para parsear el CSV no dude en utilizar alguna librería especifica para dicha tarea, como ser [Opencsv](http://opencsv.sourceforge.net/). 
+En [BasicParseCsv.scala](https://github.com/databricks/learning-spark/blob/master/src/main/scala/com/oreilly/learningsparkexamples/scala/BasicParseCsv.scala) y en el libro "Learning Spark - Lightning-Fast Big Data Analysis" capitulo 5 pag. 77 se explica como hacerlo.
 
 2. Ahora podemos calcular la cantidad de descargas  por editorial, por articulo y por país. Implemente las siguientes funciones:
 	
@@ -113,7 +118,7 @@ En [2], además de los logs, existe un pequeño dataset en formato CSV, llamado 
 	```
 **Recomendación:** Antes de implementar las funciones piense cual es el flujo de procesamiento más eficiente.
 
-3. Una vez que tenga la información de descargas por DOI necesitaremos acceder a la metadata asociada a cada DOI (Title, Year, Publisher, Book y  Subject). Para ello utilice el servicio provisto por `http://dx.doi.org/` para acceder a la metadata. Implemente la siguiente función:
+3. Una vez que tenga la información de descargas por DOI necesitaremos acceder a la metadata asociada a cada DOI (Title, Year, Publisher, Book y  Subject). Para ello utilice el servicio provisto por `https://data.crossref.org` para acceder a la metadata. Implemente la siguiente función:
 	
 	```scala
 	/** Retorna la metadata asociada a un DOI
@@ -127,6 +132,7 @@ En [2], además de los logs, existe un pequeño dataset en formato CSV, llamado 
 	 **Recomendaciones:** 
 	 * Puede encontrar útil la librería [scalaj-http](https://github.com/scalaj/scalaj-http) para hacer los request a la API.
 	 * No se complique con el parsing de JSON, use la librería que viene con scala. Es fea y poco elegante, pero sirve para lo que se necesita hacer.
+     * Analice si es más eficiente trabajar con operaciones por partición (`mapPartitions`).
 
 4. Finalmente utilice las funciones desarrolladas para obtener las siguientes visualizaciones en **Zeppelin**:
 
@@ -136,13 +142,26 @@ En [2], además de los logs, existe un pequeño dataset en formato CSV, llamado 
 
 **Nota:** En la última tabla no se ven todas las columnas, pero la misma contiene toda la metadata obtenida para un DOI.
 
-## Análisis: Tercera Etapa (Opcional)
+## Análisis: Tercera Etapa (para posgrado)
 
-Esta tercera etapa es para aquellos **"que se animen"!**
+Esta tercera etapa es obligatoria para alumnos de posgrado y para aquellos **"que se animen"!**
+
+1. En la segunda etapa guarde el mapeo de prefijo a editorial en una variable broadcast en vez de un RDD.
+
+2. Grafique en un mapa en el mismo Zeppelin la información de downloads por paises.
+
+![](img/map1.png)
+![](img/map2.png)
+
+## Análisis: Cuarta Etapa (para todo el que se anime)
+
+Esta cuarta etapa es solo para aquellos **"que se animen"!**
 
 1. El dataset contiene información de geolocalización (coordenadas) que mapea la IP desde donde se hizo la descarga a la ciudad más cercana. Reproduzca el análisis hecho en [2] para  obtener las descargas por coordenada geográfica. 
 
-2. Grafique en un mapa la información.
+2. Grafique tambien en un mapa la información.
+
+![](img/map3.png)
 
  **Recomendaciones:** 
  
