@@ -1,0 +1,6 @@
+https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/08_datasets_dataframes/Distributed-Wordcount-Chart.png
+https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/08_datasets_dataframes/Memory-Usage-when-Caching-Chart.png
+https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/08_datasets_dataframes/dataset_dataframe_unificado.png
+https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/08_datasets_dataframes/note.json
+https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/08_datasets_dataframes/type-safety-spectrum.png
+https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/08_datasets_dataframes/unified_stack.png
