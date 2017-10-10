@@ -112,3 +112,18 @@ Map( Set(A, D) -> List(List(B, C, D)),
 
 val resReduce = reduce (misAmigos_4) (freduce)
 println(resReduce)
+
+
+
+/* Version Elian y Joni */
+// var mapeador : List[(Set[String], List[String])] = List()
+// mapeador +:= (Set("A", "B"), List("A", "B", "C"))
+// mapeador :+= (Set("B", "B"), List("A", "B", "C"))
+// mapeador
+
+// def fmap(persona:String, amigos:List[String])
+//     : List[(Set[String], List[String])] = {
+//     var mapeador : List[(Set[String], List[String])] = List()
+//     for (i <- amigos) mapeador +:= (Set(persona, i), amigos)
+//     mapeador
+// }

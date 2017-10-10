@@ -1,0 +1,91 @@
+DOI	Title	Year	Type	Publisher	Book	Subject	Downloads
+10.1007/978-1-4419-9716-6_11
+Full-scale modal wind turbine tests: comparing shaker excitation with wind excitation
+2011
+chapter
+Springer New York
+Structural Dynamics and Renewable Energy, Volume 1
+N/A
+7988
+
+10.1056/NEJMoa1402121
+Comprehensive, Integrative Genomic Analysis of Diffuse Lower-Grade Gliomas
+2015
+article-journal
+New England Journal of Medicine (NEJM/MMS)
+New England Journal of Medicine
+General Medicine
+6117
+
+10.1116/1.4904970
+Photosensitive field emission study of SnS2 nanosheets
+2015
+article-journal
+American Vacuum Society
+Journal of Vacuum Science & Technology B, Nanotechnology and Microelectronics: Materials, Processing, Measurement, and Phenomena
+Instrumentation
+2991
+
+10.1103/PhysRevB.63.224204
+Griffiths effects and quantum critical points in dirty superconductors without spin-rotation invariance: One-dimensional examples
+2001
+article-journal
+American Physical Society (APS)
+Physical Review B
+Condensed Matter Physics
+2890
+
+10.1182/asheducation-2015.1.8
+Iron deficiency: new insights into diagnosis and treatment
+2015
+article-journal
+American Society of Hematology
+Hematology
+Hematology
+2528
+
+10.4028/www.scientific.net/AMM.7-8.159
+Monitoring the Evolution of Fatigue in Corrugated Paperboard under Random Loads
+2007
+article-journal
+Trans Tech Publications
+Applied Mechanics and Materials
+N/A
+2266
+
+10.1111/j.1365-277X.2004.00520.x
+Intentional mis-reporting of food consumption and its relationship with body mass index and psychological scores in women
+2004
+article-journal
+Wiley-Blackwell
+Journal of Human Nutrition and Dietetics
+Nutrition and Dietetics
+2241
+
+10.1002/pmic.200600525
+Conifer defense against insects: Proteome analysis of Sitka spruce (Picea sitchensis) bark induced by mechanical wounding or feeding by white pine weevils (Pissodes strobi)
+2007
+article-journal
+Wiley-Blackwell
+PROTEOMICS
+Biochemistry
+2168
+
+10.1161/CIRCRESAHA.117.306290
+Efficient Gene Disruption in Cultured Primary Human Endothelial Cells by CRISPR/Cas9Novelty and Significance
+2015
+article-journal
+Ovid Technologies (Wolters Kluwer Health)
+Circulation Research
+Physiology
+2001
+
+10.1002/smll.201002009
+Graphene-Based Materials: Synthesis, Characterization, Properties, and Applications
+2011
+article-journal
+Wiley-Blackwell
+Small
+Biotechnology
+1806
+

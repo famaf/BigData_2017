@@ -5,7 +5,8 @@ Hacer un programa que calcule las 10 palabras, con mas de 3 caracteres, mas
 frecuentes en el *README*.
 */
 
-val file = sc.textFile("./../../zeppelin-0.7.2-bin-all/README.md")
+val FULL_PATH = "/home/mario/Documentos/FaMAF/Optativas/BigData_2017/zeppelin-0.7.3-bin-all/"
+val file = sc.textFile(FULL_PATH + "README.md")
 
 // En el filter poner que sean mas de 3 caracteres
 val words = file.flatMap(_.split(" ")).filter(_.length > 3) // Le saca los vacios

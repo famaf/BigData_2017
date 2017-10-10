@@ -13,7 +13,7 @@ Esta solución puede ser poco eficiente ya que el archivo se recorre dos veces.
 Hacer un programa que recorra el archivo solo una vez filtrando ambas apariciones al mismo tiempo.
 Comprobar la mejora viendo el grafo en la SparkUI.
 */
-
-val inputRDD = sc.textFile("./../../zeppelin-0.7.2-bin-all/doc/log.txt") // RDD
+val FULL_PATH = "/home/mario/Documentos/FaMAF/Optativas/BigData_2017/zeppelin-0.7.3-bin-all/doc/"
+val inputRDD = sc.textFile(FULL_PATH + "log.txt") // RDD
 val stOrConfRDD = inputRDD.filter(line => line.contains("ERROR") || line.contains("config")) // se crea un nuevo RDD
 stOrConfRDD.take(10).foreach(println)

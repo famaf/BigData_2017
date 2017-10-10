@@ -116,11 +116,12 @@ def wordCoOcurrence (filePath: String) = {
     mapReduce (datos) (fmap) (freduce)
 }
 
-val word_coocurence = wordCoOcurrence("my_text.txt")
+var FULL_PATH = "/home/mario/Documentos/FaMAF/Optativas/BigData_2017/zeppelin-0.7.3-bin-all/doc/"
+val word_coocurence = wordCoOcurrence(FULL_PATH + "text_practico01.txt")
 println(word_coocurence)
 
 
-/* Elian y Joni */
+/* Version Elian y Joni */
 // def wordCoOcurrence (filePath: String) = {
 //     import scala.io.Source
 //     val lines : List[String] = Source.fromFile(filePath).getLines.toList
@@ -132,5 +133,4 @@ println(word_coocurence)
 //     mapReduce (words) (fmap) (freduce)
 // }
 // wordCoOcurrence("/home/jonathan/Desktop/prueba.txt")
-
-// //val res = fmap((), l)
+// // val res = fmap((), l)

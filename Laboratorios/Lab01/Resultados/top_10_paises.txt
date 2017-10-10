@@ -1,0 +1,11 @@
+Country	Downloads
+China	4456076
+India	3414582
+Iran	2631035
+Russia	1521434
+United States	1150963
+Brazil	1021540
+Egypt	801106
+Indonesia	780873
+N/A	562692
+France	511145

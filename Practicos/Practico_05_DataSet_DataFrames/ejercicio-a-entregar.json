@@ -1,0 +1,367 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n1. Dado el dataset `userid_profile.tsv` el cual tiene el siguiente formato:\n\n    ```\n    id \\t gender (\u0027m\u0027|\u0027f\u0027|empty) \\t age (int|empty) \\t country (str|empty) \\t registered (date|empty)\n    ```\n\n    a. Si usa Spark 2.0: Cree un `DataSet` a partir del archivo usando Reflection.\n    b. Si usa Spark 1.6.x: Cree un `DataFrame` a partir del archivo especificando explícitamente el esquema del DataFrame.\n    c. Guarde el Dataset (o el DataFrame) en formato `parquet`\n\n2. Usando el dataset en formato parquet creado en el punto anterior, compute las siguientes métricas usando SQL.\n\n    a. Cantidad de usuarios por país.\n    b. Cantidad de usuarios por país desagregado por sexo.\n    c. Edad promedio según el genero del usuario.\n    d. Cantidad de usuarios por fecha de registración. Genere un gráfico para esta métrica.\n\n3. Ahora calcule las mismas métricas esta vez de forma programatica (i.e.: usando los métodos provistos por el dataset/dataframe).\n",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788109_1406975680",
+      "id": "20161011-190817_94338606",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Sanitizacion del dataset y creacion del archivo parquet ",
+      "text": "import scala.util.Try\nimport com.github.nscala_time.time.Imports._\nimport org.apache.spark.sql.SaveMode\n\n\nval base_dir \u003d \"/Users/ezequielorbe/Teaching/Spark2016/datasets/last-fm/lastfm-dataset-1K\"\nval source_file \u003d s\"${base_dir}/userid-profile.tsv\"\nval target_file \u003d s\"${base_dir}/users_profiles.parquet\"\n\ncase class User(id:String, gender:String, age:Int, country:String, registered:java.sql.Timestamp)\n\ndef createUser(att:Array[String]):User \u003d{\n    val signup \u003d Try({\n            new java.sql.Timestamp(DateTimeFormat.forPattern(\"MMMM d, yyyy\")\n                .parseDateTime(att(4))\n                .toDate.getTime())\n        }) getOrElse  new java.sql.Timestamp(0)\n        \n    val age \u003d Try(att(2).trim.toInt) getOrElse 0\n    \n    User(att(0), att(1), age, att(3), signup)\n}   \n\n// metodo artesanal: levantando un rdd, limpiandolo y luego creando el dataset.\nval ds \u003d sc.textFile(source_file)\n    .map(x \u003d\u003e x.split(\"\\t\"))\n    .filter(x \u003d\u003e x.length \u003d\u003d 5 \u0026\u0026 x(0) !\u003d \"id\")\n    .map(x \u003d\u003e createUser(x))\n    .toDS()\n\nds.write\n    .mode(SaveMode.Overwrite)\n    .parquet(target_file)\n",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "title": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161011-190742_741519612",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Levantando el archivo parquet y registrandolo como tabla",
+      "text": "val ds1 \u003d spark.read.parquet(target_file).as[User]\nds1.createOrReplaceTempView(\"users\")",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "title": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161012-081442_1990017348",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect country, count(id) as ncount from users group by country order by ncount desc",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "country",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "ncount",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "country",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "colWidth": 4.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161012-081938_971627659",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect country, gender, count(id) as ncount from users group by country, gender order by country,ncount desc",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "country",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "gender",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "country",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "gender",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 4.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161012-082341_791556920",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect gender, max(age), min(age), avg(age) from users group by gender",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "gender",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "max(age)",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "gender",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 4.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161012-082651_1939928802",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect registered, count(id) from users group by registered order by registered",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "lineChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "registered",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "count(id)",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "registered",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "count(id)",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161012-083948_1340102468",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Prueba (no usar)",
+      "text": "// Metodo alternativo para levantar el csv. Solo funcion si el CSV esta\n// sanitizado y todos los campos son parseables (e.g. todas las fechas se pueden parsear, etc).\n// Con el dataset original NO funciona ya que hay fechas vacias que no se pueden parsear.\nval df \u003d spark.read\n    .option(\"header\", \"true\")\n    .option(\"sep\",\"\\t\")\n    .option(\"dateFormat\", \"MMMM d, yyyy\")\n    .option(\"inferSchema\",true)\n    .csv(users_file)\n\nval ds2\u003d df.as[User]\n\nds2.write\n    .mode(SaveMode.Overwrite)\n    .parquet(\"/Users/ezequielorbe/Teaching/Spark2016/datasets/last-fm/lastfm-dataset-1K/users_profiles_2.parquet\")\n\n",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "title": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161012-005539_2144949014",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Oct 13, 2016 9:46:28 AM",
+      "config": {
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1476362788110_1408129926",
+      "id": "20161011-193754_805692666",
+      "dateCreated": "Oct 13, 2016 9:46:28 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Práctico 5 - SQL a entregar",
+  "id": "2C1VJ9TNA",
+  "angularObjects": {
+    "2BUZCH9PS:shared_process": [],
+    "2BV2GVFMP:shared_process": [],
+    "2BV899SEZ:shared_process": [],
+    "2BUXM7J25:shared_process": [],
+    "2BVFEXD75:shared_process": [],
+    "2BY66VGTW:shared_process": [],
+    "2BUVWF7V1:shared_process": [],
+    "2BUQNM6NX:shared_process": [],
+    "2BXH733A5:shared_process": [],
+    "2BVFWHQUQ:shared_process": [],
+    "2BVK7R7SG:shared_process": [],
+    "2BV3VU2H3:shared_process": [],
+    "2BWGR1E17:shared_process": [],
+    "2BYDUTZQ7:shared_process": [],
+    "2BUTDPXD1:shared_process": [],
+    "2BVGPQ3WJ:shared_process": [],
+    "2BXQA99DQ:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}

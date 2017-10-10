@@ -95,11 +95,12 @@ def wordCount (filePath: String) = {
     mapReduce (datos) (fmap) (freduce)
 }
 
-var count_word = wordCount("my_text.txt")
+var FULL_PATH = "/home/mario/Documentos/FaMAF/Optativas/BigData_2017/zeppelin-0.7.3-bin-all/doc/"
+var count_word = wordCount(FULL_PATH + "text_practico01.txt")
 println(count_word)
 
 
-/* Elian y Joni */
+/* Version Elian y Joni */
 // def wordCount (filePath: String) = {
 //     import scala.io.Source
 //     val lines : List[String] = Source.fromFile(filePath).getLines.toList

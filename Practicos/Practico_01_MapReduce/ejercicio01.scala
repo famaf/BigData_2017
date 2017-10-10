@@ -92,11 +92,12 @@ def countCharFile (filePath: String) = {
     mapReduce (datos) (fmap) (freduce)
 }
 
-var count_file = countCharFile("my_text.txt")
+var FULL_PATH = "/home/mario/Documentos/FaMAF/Optativas/BigData_2017/zeppelin-0.7.3-bin-all/doc/"
+var count_file = countCharFile(FULL_PATH + "text_practico01.txt")
 println(count_file)
 
 
-/* Elian y Joni */
+/* Version Elian y Joni */
 // def countCharFile (filePath: String) = {
 //     import scala.io.Source
 //     val lines : List[String] = Source.fromFile(filePath).getLines.toList

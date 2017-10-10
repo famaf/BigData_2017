@@ -138,7 +138,7 @@ var my_friends = amigosEnComun(amigosDe)
 println(my_friends)
 
 
-/* Elian y Joni */
+/* Version Elian y Joni */
 // def amigosEnComun(ade: List[(String,List[String])]) = {
 //     // val res = ade.flatMap(x => for (name <- x._2) yield (Set(x._1, name), x._2))
 //     // val fmap = (name: String, friends:List[String]) => for (name_friend <- friends) yield (Set(name, name_friend), friends)

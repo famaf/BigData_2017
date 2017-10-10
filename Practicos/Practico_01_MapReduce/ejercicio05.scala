@@ -40,6 +40,7 @@ def mapReduce[Kin, Vin, Kout, Vout, VFin]
         val resMap = elMap (datosIn) (fmap)
         val resAgrupo = agrupa(resMap)
         val resReduce = reduce (resAgrupo) (freduce)
+
         return resReduce
     }
 
@@ -75,47 +76,22 @@ Con el programa "mapReduce" calcule el promedio de una lista de numeros.
 A continuación se da un esqueleto del programa a completar:
 */
 
-def promedio (nums: List[Double]) : Double = {
+def promedio (nums: List[Double]) : Double= {
     val datos = nums.map(n => ((), n))
 
-    val fmap = (_ :Unit, n: Double) => List((n, 1))
-    val freduce = (n: Double, vs: List[Int]) => (n, vs.fold (0) (_+_))
+    val fmap = (_ :Unit, n: Double) => List(((), (1, n)))
+    val freduce = (_: Unit, num: List[(Int, Double)]) =>
+                  num.fold ((0, 0.0)) ((x: (Int, Double), y: (Int, Double)) =>
+                                       (x._1 + y._1, x._2 + y._2))
 
-    val mr = mapReduce (datos) (fmap) (freduce)
+    val mr = mapReduce (datos) (fmap) (freduce)  // List
+    val res_map_red = mr(0)  // ( len(nums), sum(nums) )
 
-    //> mr
-    //> List[(Double, Int)] = List((num, ocurrences))
-    return mr.map(_._1).sum / mr.map(_._2).sum
+    return res_map_red._2 / res_map_red._1
 }
 
-// var average = promedio(List(1.0, 2.0, 3.0, 4.0, 5.0))
-var average = promedio(List(1.0, 1.0, 2.0, 2.0, 4.0))
-// (1, 2) (2, 2) (4, 1)
-println(average)
+val list_1: List[Double] = List(1, 2, 3, 4, 5)
+var average = promedio(list_1)  // 15 / 5
 
-
-/* Elian y Joni */
-// def promedio (nums: List[Double]) : Double = {
-//     val datos = nums.map(n => ((), n))
-
-//     val fmap = (_: Unit, num: Double) => List(((), (1, num)))
-//     val freduce = (_: Unit, num: List[(Int, Double)]) => num.fold ((0,0.0)) ((x: (Int, Double), y: (Int, Double)) => (x._1 + y._1, x._2 + y._2))
-//     val resMapRed = (mapReduce (datos) (fmap) (freduce))(0)
-//     return resMapRed._2 / resMapRed._1
-// }
-// val a: List[Double] = List(1,2,3,4,5)
-// val r = promedio(a)
-
-
-
-// var mapeador : List[(Set[String], List[String])] = List()
-// mapeador +:= (Set("A", "B"), List("A", "B", "C"))
-// mapeador :+= (Set("B", "B"), List("A", "B", "C"))
-// mapeador
-
-// def fmap(persona:String, amigos:List[String])
-//     : List[(Set[String], List[String])] = {
-//     var mapeador : List[(Set[String], List[String])] = List()
-//     for (i <- amigos) mapeador +:= (Set(persona, i), amigos)
-//     mapeador
-// }
+val list_2: List[Double] = List(1, 1, 2, 2, 4)
+var average = promedio(list_2)  // 10 / 5
