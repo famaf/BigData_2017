@@ -1,1 +1,234 @@
-﻿{"paragraphs":[{"text":"%md\n### Ejercicio 1\n##### (problema con dataset de ejercicio de práctico anterior) \n\n[DBPedia](http://wiki.dbpedia.org/) es una síntesis estructurada de las relaciones que aparecen en la Wikipedia.\nEstructura sus datos en 2 tipos de archivos:\n* **Propiedades** - Archivo que contiene 3-uplas con (sujeto,relación,predicado), por ejemplo (Aristoteles, Año de nacimiento, -384)\n* **Tipos** - Archivo que contiene 3-uplas con (sujeto, sintaxis de tipo, tipo del sujeto).\n\nEn los *Archivos de prueba* de la materia hay extractos de los mismos (`mappingbased_properties_en.nt` y `instance_types_en.nt`).\n\nAnalizar el formato de estos archivos sanearlos para crear los RDD teniendo en cuenta que:\n* no se pueden modificar a mano los archivos.\n* puede haber lineas basura. Son las que no comienzan con el caracter `<`\n* puede haber lineas en blanco.\n* cada linea termina con un punto que hay que descartar.\n* un sujeto puede aparecer en varias lineas con distintas relacion/predicado en `mappingbased_properties_en.nt`\n* un sujeto puede tener varios tipos en `instance_types_en.nt`.\n* La sintaxis de tipo en el archivo `instance_types_en.nt` no hay que tenerla en cuenta en el algoritmo.\n\nEl programa debe contar la cantidad de propiedades (lineas en el archivo `mappingbased_properties_en.nt`) por tipo del sujeto utilizando solo la API de datasets.\n\nA continuación se presentan los tipos que deben ser usados:\n\n","dateUpdated":"2017-10-09T23:33:12-0300","config":{"colWidth":12,"editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":true,"editorSetting":{"language":"markdown","editOnDblClick":true},"editorMode":"ace/mode/markdown","tableHide":false},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h3>Ejercicio 1</h3>\n<h5>(problema con dataset de ejercicio de práctico anterior)</h5>\n<p><a href=\"http://wiki.dbpedia.org/\">DBPedia</a> es una síntesis estructurada de las relaciones que aparecen en la Wikipedia.<br/>Estructura sus datos en 2 tipos de archivos:<br/>* <strong>Propiedades</strong> - Archivo que contiene 3-uplas con (sujeto,relación,predicado), por ejemplo (Aristoteles, Año de nacimiento, -384)<br/>* <strong>Tipos</strong> - Archivo que contiene 3-uplas con (sujeto, sintaxis de tipo, tipo del sujeto).</p>\n<p>En los <em>Archivos de prueba</em> de la materia hay extractos de los mismos (<code>mappingbased_properties_en.nt</code> y <code>instance_types_en.nt</code>).</p>\n<p>Analizar el formato de estos archivos sanearlos para crear los RDD teniendo en cuenta que:<br/>* no se pueden modificar a mano los archivos.<br/>* puede haber lineas basura. Son las que no comienzan con el caracter <code>&lt;</code><br/>* puede haber lineas en blanco.<br/>* cada linea termina con un punto que hay que descartar.<br/>* un sujeto puede aparecer en varias lineas con distintas relacion/predicado en <code>mappingbased_properties_en.nt</code><br/>* un sujeto puede tener varios tipos en <code>instance_types_en.nt</code>.<br/>* La sintaxis de tipo en el archivo <code>instance_types_en.nt</code> no hay que tenerla en cuenta en el algoritmo.</p>\n<p>El programa debe contar la cantidad de propiedades (lineas en el archivo <code>mappingbased_properties_en.nt</code>) por tipo del sujeto utilizando solo la API de datasets.</p>\n<p>A continuación se presentan los tipos que deben ser usados:</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1507597234164_1868899105","id":"20161012-151316_948997702","dateCreated":"2017-10-09T22:00:34-0300","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:101","user":"anonymous","dateFinished":"2017-10-09T23:32:58-0300","dateStarted":"2017-10-09T23:32:57-0300"},{"text":"case class Propiedad (sujeto: String, verbo: String, predicado: String)\ncase class Tipo(entidad: String, tipo: String)\ncase class Tipos(entidad: String, tipos: Array[String])\ncase class PropTipo (sujeto: String, tipo: String, verbo: String, predicado: String)\n\n// cargar SparkSparkSession\nval inPropRaw : Dataset[String] = spark.read.text(\"./doc/mappingbased_properties_en.nt\").as[String]\n","dateUpdated":"2017-10-09T23:33:41-0300","config":{"colWidth":12,"editorMode":"ace/mode/scala","graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}},"enabled":true,"results":{},"editorSetting":{"language":"scala"}},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1507597234165_1868514356","id":"20161012-152148_2089763876","dateCreated":"2017-10-09T22:00:34-0300","status":"ERROR","progressUpdateIntervalMs":500,"$$hashKey":"object:102","user":"anonymous","dateFinished":"2017-10-09T23:33:43-0300","dateStarted":"2017-10-09T23:33:41-0300","results":{"code":"ERROR","msg":[{"type":"TEXT","data":"defined class Propiedad\ndefined class Tipo\ndefined class Tipos\ndefined class PropTipo\n<console>:27: error: not found: type Dataset\n       val inPropRaw : Dataset[String] = spark.read.text(\"./doc/mappingbased_properties_en.nt\").as[String]\n                       ^\n"}]}},{"text":"%md\n### Ejercicio 2\n\nUtilizando los datos anteriores producir una salida que agregue a las propiedades los tipos del sujeto como un arreglo, de forma tal que cada linea tenga la información de la 4-upla (sujeto, [tipos del sujeto], relación, predicado).\n\n","dateUpdated":"2017-10-09T23:33:35-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":true,"editorSetting":{"language":"markdown","editOnDblClick":true},"tableHide":false},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h3>Ejercicio 2</h3>\n<p>Utilizando los datos anteriores producir una salida que agregue a las propiedades los tipos del sujeto como un arreglo, de forma tal que cada linea tenga la información de la 4-upla (sujeto, [tipos del sujeto], relación, predicado).</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1507597234166_1869668603","id":"20161012-151343_1004804411","dateCreated":"2017-10-09T22:00:34-0300","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:103","user":"anonymous","dateFinished":"2017-10-09T23:33:35-0300","dateStarted":"2017-10-09T23:33:35-0300"},{"text":"","dateUpdated":"2017-10-09T22:00:34-0300","config":{"colWidth":12,"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}},"enabled":true,"results":{},"editorSetting":{"language":"scala"},"editorMode":"ace/mode/scala"},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1507597234167_1869283854","id":"20161012-152134_884516682","dateCreated":"2017-10-09T22:00:34-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:104"}],"name":"Práctico 5 - Datasets","id":"2CWCN5W2Z","angularObjects":{"2CTEYBEU9:shared_process":[],"2CVG6DW5Y:shared_process":[],"2CV5WTXTS:shared_process":[],"2CTU7X96J:shared_process":[],"2CTP1KP9A:shared_process":[],"2CUSPRK2N:shared_process":[],"2CTN8WXTW:shared_process":[],"2CTPVRNUN:shared_process":[],"2CWGNZV35:shared_process":[],"2CVTVCASK:shared_process":[],"2CUN4VY52:shared_process":[],"2CWR6RMD5:shared_process":[],"2CTV5EHA4:shared_process":[],"2CUTDCFNQ:shared_process":[],"2CTMXK2C8:shared_process":[],"2CWW6FP8K:shared_process":[],"2CWMAY8ZQ:shared_process":[],"2CTF5TQPJ:shared_process":[],"2CWY8STEM:shared_process":[]},"config":{"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "text": "%md\n### Ejercicio 1\n##### (problema con dataset de ejercicio de práctico anterior) \n\n[DBPedia](http://wiki.dbpedia.org/) es una síntesis estructurada de las relaciones que aparecen en la Wikipedia.\nEstructura sus datos en 2 tipos de archivos:\n* **Propiedades** - Archivo que contiene 3-uplas con (sujeto,relación,predicado), por ejemplo (Aristoteles, Año de nacimiento, -384)\n* **Tipos** - Archivo que contiene 3-uplas con (sujeto, tipo del sujeto, sintaxis de tipo).\n\nEn los *Archivos de prueba* de la materia hay extractos de los mismos (`mappingbased_properties_en.nt` y `instance_types_en.nt`).\n\nAnalizar el formato de estos archivos sanearlos para crear los Datasets teniendo en cuenta que:\n* no se pueden modificar a mano los archivos.\n* puede haber lineas basura. Son las que no comienzan con el caracter `\u003c`\n* puede haber lineas en blanco.\n* cada linea termina con un punto que hay que descartar.\n* un sujeto puede aparecer en varias lineas con distintas relacion/predicado en `mappingbased_properties_en.nt`\n* un sujeto puede tener varios tipos en `instance_types_en.nt`.\n* La sintaxis de tipo en el archivo `instance_types_en.nt` no hay que tenerla en cuenta en el algoritmo.\n\nEl programa debe contar la cantidad de propiedades (lineas en el archivo `mappingbased_properties_en.nt`) por tipo del sujeto utilizando solo la API de Datasets (con tipo).\n\nA continuación se presentan los tipos que deben ser usados:\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Oct 11, 2017 2:33:50 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio 1\u003c/h3\u003e\n\u003ch5\u003e(problema con dataset de ejercicio de práctico anterior)\u003c/h5\u003e\n\u003cp\u003e\u003ca href\u003d\"http://wiki.dbpedia.org/\"\u003eDBPedia\u003c/a\u003e es una síntesis estructurada de las relaciones que aparecen en la Wikipedia.\u003cbr/\u003eEstructura sus datos en 2 tipos de archivos:\u003cbr/\u003e* \u003cstrong\u003ePropiedades\u003c/strong\u003e - Archivo que contiene 3-uplas con (sujeto,relación,predicado), por ejemplo (Aristoteles, Año de nacimiento, -384)\u003cbr/\u003e* \u003cstrong\u003eTipos\u003c/strong\u003e - Archivo que contiene 3-uplas con (sujeto, tipo del sujeto, sintaxis de tipo).\u003c/p\u003e\n\u003cp\u003eEn los \u003cem\u003eArchivos de prueba\u003c/em\u003e de la materia hay extractos de los mismos (\u003ccode\u003emappingbased_properties_en.nt\u003c/code\u003e y \u003ccode\u003einstance_types_en.nt\u003c/code\u003e).\u003c/p\u003e\n\u003cp\u003eAnalizar el formato de estos archivos sanearlos para crear los Datasets teniendo en cuenta que:\u003cbr/\u003e* no se pueden modificar a mano los archivos.\u003cbr/\u003e* puede haber lineas basura. Son las que no comienzan con el caracter \u003ccode\u003e\u0026lt;\u003c/code\u003e\u003cbr/\u003e* puede haber lineas en blanco.\u003cbr/\u003e* cada linea termina con un punto que hay que descartar.\u003cbr/\u003e* un sujeto puede aparecer en varias lineas con distintas relacion/predicado en \u003ccode\u003emappingbased_properties_en.nt\u003c/code\u003e\u003cbr/\u003e* un sujeto puede tener varios tipos en \u003ccode\u003einstance_types_en.nt\u003c/code\u003e.\u003cbr/\u003e* La sintaxis de tipo en el archivo \u003ccode\u003einstance_types_en.nt\u003c/code\u003e no hay que tenerla en cuenta en el algoritmo.\u003c/p\u003e\n\u003cp\u003eEl programa debe contar la cantidad de propiedades (lineas en el archivo \u003ccode\u003emappingbased_properties_en.nt\u003c/code\u003e) por tipo del sujeto utilizando solo la API de Datasets (con tipo).\u003c/p\u003e\n\u003cp\u003eA continuación se presentan los tipos que deben ser usados:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1507741373842_-206988705",
+      "id": "20161012-151316_948997702",
+      "dateCreated": "Oct 11, 2017 2:02:53 PM",
+      "dateStarted": "Oct 11, 2017 2:33:40 PM",
+      "dateFinished": "Oct 11, 2017 2:33:40 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "case class Propiedad (sujeto: String, verbo: String, predicado: String)\ncase class Tipo(entidad: String, tipo: String)\ncase class Tipos(entidad: String, tipos: Array[String])\ncase class PropTipo (sujeto: String, tipo: String, verbo: String, predicado: String)\n\n// cargar SparkSparkSession\nval inPropRaw : Dataset[String] \u003d spark.read.text(\"./doc/mappingbased_properties_en.nt\").as[String]\n",
+      "dateUpdated": "Oct 11, 2017 2:04:08 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1507741373844_-209297198",
+      "id": "20161012-152148_2089763876",
+      "dateCreated": "Oct 11, 2017 2:02:53 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Ejercicio 2\n\nUtilizando los datos anteriores producir una salida que agregue a las propiedades los tipos del sujeto como un arreglo, de forma tal que cada linea tenga la información de la 4-upla (sujeto, [tipos del sujeto], relación, predicado).\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Oct 11, 2017 2:33:29 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio 2\u003c/h3\u003e\n\u003cp\u003eUtilizando los datos anteriores producir una salida que agregue a las propiedades los tipos del sujeto como un arreglo, de forma tal que cada linea tenga la información de la 4-upla (sujeto, [tipos del sujeto], relación, predicado).\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1507741373846_-208527701",
+      "id": "20161012-151343_1004804411",
+      "dateCreated": "Oct 11, 2017 2:02:53 PM",
+      "dateStarted": "Oct 11, 2017 2:33:18 PM",
+      "dateFinished": "Oct 11, 2017 2:33:18 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n### Ejercicio 3\n\n1. Dado el dataset `userid_profile.tsv` el cual tiene el siguiente formato:\n\n    ```\n    id \\t gender (\u0027m\u0027|\u0027f\u0027|empty) \\t age (int|empty) \\t country (str|empty) \\t registered (date|empty)\n    ```\n\n    a. Si usa Spark 2.0: Cree un `DataSet` a partir del archivo usando Reflection.\n    b. Si usa Spark 1.6.x: Cree un `DataFrame` a partir del archivo especificando explícitamente el esquema del DataFrame.\n    c. Guarde el Dataset (o el DataFrame) en formato `parquet`\n\n2. Usando el dataset en formato parquet creado en el punto anterior, compute las siguientes métricas usando SQL.\n\n    a. Cantidad de usuarios por país.\n    b. Cantidad de usuarios por país desagregado por sexo.\n    c. Edad promedio según el genero del usuario.\n    d. Cantidad de usuarios por fecha de registración. Genere un gráfico para esta métrica.\n\n3. Ahora calcule las mismas métricas esta vez de forma programatica (i.e.: usando los métodos provistos por el dataset/dataframe).",
+      "user": "anonymous",
+      "dateUpdated": "Oct 11, 2017 2:33:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEjercicio 3\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003e\n    \u003cp\u003eDado el dataset \u003ccode\u003euserid_profile.tsv\u003c/code\u003e el cual tiene el siguiente formato:\u003c/p\u003e\n    \u003cpre\u003e\u003ccode\u003eid \\t gender (\u0026#39;m\u0026#39;|\u0026#39;f\u0026#39;|empty) \\t age (int|empty) \\t country (str|empty) \\t registered (date|empty)\n\u003c/code\u003e\u003c/pre\u003e\n    \u003cp\u003ea. Si usa Spark 2.0: Cree un \u003ccode\u003eDataSet\u003c/code\u003e a partir del archivo usando Reflection.\u003cbr/\u003eb. Si usa Spark 1.6.x: Cree un \u003ccode\u003eDataFrame\u003c/code\u003e a partir del archivo especificando explícitamente el esquema del DataFrame.\u003cbr/\u003ec. Guarde el Dataset (o el DataFrame) en formato \u003ccode\u003eparquet\u003c/code\u003e\u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\n    \u003cp\u003eUsando el dataset en formato parquet creado en el punto anterior, compute las siguientes métricas usando SQL.\u003c/p\u003e\n    \u003cp\u003ea. Cantidad de usuarios por país.\u003cbr/\u003eb. Cantidad de usuarios por país desagregado por sexo.\u003cbr/\u003ec. Edad promedio según el genero del usuario.\u003cbr/\u003ed. Cantidad de usuarios por fecha de registración. Genere un gráfico para esta métrica.\u003c/p\u003e\n  \u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eAhora calcule las mismas métricas esta vez de forma programatica (i.e.: usando los métodos provistos por el dataset/dataframe).\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1507741373847_-208912450",
+      "id": "20161012-152134_884516682",
+      "dateCreated": "Oct 11, 2017 2:02:53 PM",
+      "dateStarted": "Oct 11, 2017 2:33:01 PM",
+      "dateFinished": "Oct 11, 2017 2:33:01 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\n",
+      "user": "anonymous",
+      "dateUpdated": "Oct 11, 2017 2:33:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1507743181850_1795246216",
+      "id": "20171011-143301_3405385",
+      "dateCreated": "Oct 11, 2017 2:33:01 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Práctico 5 - Datasets",
+  "id": "2CXT4MNZD",
+  "angularObjects": {
+    "2CVGDCPRC:shared_process": [],
+    "2CWU5CDHZ:shared_process": [],
+    "2CT8824T5:shared_process": [],
+    "2CU175KYA:shared_process": [],
+    "2CVW8KG5T:shared_process": [],
+    "2CVUG7AYZ:shared_process": [],
+    "2CU2PGWJK:shared_process": [],
+    "2CTY6NNQE:shared_process": [],
+    "2CWN7MJ7T:shared_process": [],
+    "2CU7V5RQS:shared_process": [],
+    "2CTE4TQQ3:shared_process": [],
+    "2CWGK27UU:shared_process": [],
+    "2CT7JSWR8:shared_process": [],
+    "2CWKBNSF7:shared_process": [],
+    "2CWTDEFZ3:shared_process": [],
+    "2CUBD912K:shared_process": [],
+    "2CW4YQTDJ:shared_process": [],
+    "2CTW8ZN43:shared_process": [],
+    "2CVTSPTRQ:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
