@@ -1,1 +1,676 @@
-﻿{"paragraphs":[{"text":"print(\"\"\"%html\n<center>\n    <h1>Programación Distribuida sobre Grandes Volúmenes de Datos</h1>\n</center>\n\n<br>\n\n<h3 style=\"text-align:center;\">\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    Facultad de Matemática Astronomía Física y Computación\n    </a>\n<br/>\n    <a href=\"http://www.unc.edu.ar\">\n    Universidad Nacional de Córdoba\n    </a>\n<br/>\n    <center>\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    <img src=\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt=\"Drawing\" style=\"width:50%;\"/>\n    </a>\n    </center>\n</h3>\n\n<h4 style=\"text-align:center;\"> Damián Barsotti - Ezequiel Orbe  </h4>\n\n<p style=\"font-size:15px;\">\n    <br />\n        This work is licensed under a\n        <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.\n    <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">\n        <img alt=\"Creative Commons License\" style=\"border-width:0;vertical-align:middle;float:right\" src=\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" />\n    </a>\n</p>\n\"\"\")\n","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/scala","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<center>\n    <h1>Programación Distribuida sobre Grandes Volúmenes de Datos</h1>\n</center>\n\n<br>\n\n<h3 style=\"text-align:center;\">\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    Facultad de Matemática Astronomía Física y Computación\n    </a>\n<br/>\n    <a href=\"http://www.unc.edu.ar\">\n    Universidad Nacional de Córdoba\n    </a>\n<br/>\n    <center>\n    <a href=\"http://www.famaf.unc.edu.ar\">\n    <img src=\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt=\"Drawing\" style=\"width:50%;\"/>\n    </a>\n    </center>\n</h3>\n\n<h4 style=\"text-align:center;\"> Damián Barsotti - Ezequiel Orbe  </h4>\n\n<p style=\"font-size:15px;\">\n    <br />\n        This work is licensed under a\n        <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.\n    <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">\n        <img alt=\"Creative Commons License\" style=\"border-width:0;vertical-align:middle;float:right\" src=\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" />\n    </a>\n</p>\n"}]},"apps":[],"jobName":"paragraph_1506720531870_-1233319219","id":"20160830-160425_56195218","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:26"},{"text":"%md\n# Aplicaciones autónomas\n\nComo ya vimos Spark puede correr:\n* de forma interactiva con shell (data exploration, prototyping)\n* como una **aplicación autónoma** (standalone) Scala, Python o Java (job recurrente).\n\nNos concentraremos en como construir una aplicación en Scala.\n\n","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h1>Aplicaciones autónomas</h1>\n<p>Como ya vimos Spark puede correr:</p>\n<ul>\n<li>de forma interactiva con shell (data exploration, prototyping)</li>\n<li>como una <strong>aplicación autónoma</strong> (standalone) Scala, Python o Java (job recurrente).</li>\n</ul>\n<p>Nos concentraremos en Scala.</p>\n"}]},"apps":[],"jobName":"paragraph_1506720531885_-1252941413","id":"20160830-160523_1822218154","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:27"},{"text":"%md\n## ~.- Entorno de Desarrollo y Setup\n\nPara desarrollar aplicaciones de Spark en Scala necesitaremos los siguiente:\n\n* Scala\n* SBT\n* Scala IDE (opcional)\n* Spark ","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h2>~.- Entorno de Desarrollo y Setup</h2>\n<p>Para desarrollar aplicaciones de Spark en Scala necesitaremos los siguiente:</p>\n<ul>\n<li>Scala</li>\n<li>SBT</li>\n<li>Scala IDE (opcional)</li>\n<li>Spark</li>\n</ul>\n"}]},"apps":[],"jobName":"paragraph_1506720531887_-1252171915","id":"20160920-202245_1044937570","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:28"},{"text":"%md\n\n### Scala IDE\n\n* Es un full IDE para desarrollar en scala.\n\n* Se puede descargar desde: [http://scala-ide.org/](http://scala-ide.org/)\n\n* **Pros**:\n    * Intellisense \n    * Integracion con para correr unit tests.\n    * etc.\n\n* **Cons**: \n    * Memory-Intensive (es \"pesado\").","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":6,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>Scala IDE</h3>\n<ul>\n<li><p>Es un full IDE para desarrollar en scala.</p>\n</li>\n<li><p>Se puede descargar desde: <a href=\"http://scala-ide.org/\">http://scala-ide.org/</a></p>\n</li>\n<li><p><strong>Pros</strong>:</p>\n<ul>\n<li>Intellisense</li>\n<li>Integracion con para correr unit tests.</li>\n<li>etc.</li>\n</ul>\n</li>\n<li><p><strong>Cons</strong>:</p>\n<ul>\n<li>Memory-Intensive (es &ldquo;pesado&rdquo;).</li>\n</ul>\n</li>\n</ul>\n"}]},"apps":[],"jobName":"paragraph_1506720531889_-1242168444","id":"20160920-204557_790425937","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:29"},{"text":"%md \n\n### Estructura del Proyecto.\n\n* La estructura recomendada sigue los lineamientos sugeridos por [Maven](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)\n\n```\n<project>\n    - src\n        - main\n            - resources \n            - scala\n        - test\n            - resources \n            - scala\n    - lib\n    - project\n    - target\n    - doc\n    - <project>.sbt\n```","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":6,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>Estructura del Proyecto.</h3>\n<ul>\n<li>La estructura recomendada sigue los lineamientos sugeridos por <a href=\"http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html\">Maven</a></li>\n</ul>\n<pre><code>&lt;project&gt;\n    - src\n        - main\n            - resources \n            - scala\n        - test\n            - resources \n            - scala\n    - lib\n    - project\n    - target\n    - doc\n    - &lt;project&gt;.sbt\n</code></pre>\n"}]},"apps":[],"jobName":"paragraph_1506720531893_-1243707439","id":"20160920-205118_1927997315","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:30"},{"text":"%md\n### Sbt\n\nEs una herramienta de compilación y gestión de dependencias para aplicaciones Scala.\n\n#### Instalación\n\n* Debian/Ubuntu\n```shell-session\n$ echo \"deb https://dl.bintray.com/sbt/debian /\" | sudo tee -a /etc/apt/sources.list.d/sbt.list\n$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823\n$ sudo apt-get update\n$ sudo apt-get install sbt\n```\n\n* Mac\n\n```shell\nbrew install sbt\n```\n\n* Windows MSI en [https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/](https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/)\n\n* `tar.gz` y `zip` en [http://www.scala-sbt.org/download.html](http://www.scala-sbt.org/download.html)\n\n#### Plugins Utiles\n\n* **sbteclipse:** Para generar proyectos de Eclipse.\n* **sbt-assembly:** Para crear \"fat\" JARS.\n\n#### Comandos Utiles\n\n* **sbt update:** Actualiza las dependencias.\n\n* **sbt eclipse:** Crea un proyecto de Eclipse y actualiza las referencias del proyecto.\n\n* **sbt package:** Empaqueta la aplicación creando un JAR (no fat!).\n\n* **sbt assembly:** Empaqueta la aplicación creando un fat JAR. \n","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>Sbt</h3>\n<p>Es una herramienta de compilación y gestión de dependencias para aplicaciones Scala.</p>\n<h4>Instalación</h4>\n<ul>\n<li><p>Debian/Ubuntu</p>\n<pre><code class=\"shell-session\">$ echo \"deb https://dl.bintray.com/sbt/debian /\" | sudo tee -a /etc/apt/sources.list.d/sbt.list\n$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823\n$ sudo apt-get update\n$ sudo apt-get install sbt\n</code></pre>\n</li>\n<li><p>Mac</p>\n</li>\n</ul>\n<pre><code class=\"shell\">brew install sbt\n</code></pre>\n<ul>\n<li><p>Windows MSI en <a href=\"https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/\">https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/</a></p>\n</li>\n<li><p><code>tar.gz</code> y <code>zip</code> en <a href=\"http://www.scala-sbt.org/download.html\">http://www.scala-sbt.org/download.html</a></p>\n</li>\n</ul>\n<h4>Plugins Utiles</h4>\n<ul>\n<li><strong>sbteclipse:</strong> Para generar proyectos de Eclipse.</li>\n<li><strong>sbt-assembly:</strong> Para crear &ldquo;fat&rdquo; JARS.</li>\n</ul>\n<h4>Comandos Utiles</h4>\n<ul>\n<li><p><strong>sbt update:</strong> Actualiza las dependencias.</p>\n</li>\n<li><p><strong>sbt eclipse:</strong> Crea un proyecto de Eclipse y actualiza las referencias del proyecto.</p>\n</li>\n<li><p><strong>sbt package:</strong> Empaqueta la aplicación creando un JAR (no fat!).</p>\n</li>\n<li><p><strong>sbt assembly:</strong> Empaqueta la aplicación creando un fat JAR.</p>\n</li>\n</ul>\n"}]},"apps":[],"jobName":"paragraph_1506720531896_-1244861686","id":"20160830-173003_2005788781","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:31"},{"text":"%md\n\n### Contenido básico del archivo .sbt\n\n```scala\nname := \"<project>\"\n\nversion := \"1.0\"\n\nscalaVersion := \"2.10.5\"\n\nlibraryDependencies +=  \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"\n```","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>Contenido básico del archivo .sbt</h3>\n<pre><code class=\"scala\">name := \"&lt;project&gt;\"\n\nversion := \"1.0\"\n\nscalaVersion := \"2.10.5\"\n\nlibraryDependencies +=  \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"\n</code></pre>\n"}]},"apps":[],"jobName":"paragraph_1506720531898_-1244092188","id":"20160921-000303_1324292834","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:32"},{"text":"%md\n#### Agregando dependencias en el archivo .sbt\n\n* Las dependencias se agregan a través de `libraryDependencies`.\n\n* En `libraryDependencies` a una librería se le puede indicar una versión de scala específica:\n<br>\n```\nlibraryDependencies +=  \"org.apache.spark\" % \"spark-core_2.9\" % \"1.6.1\" % \"provided\n```\n    - notar que se usa simple `%`\n    - si se usa `%%` sbt agrega automaticamente la version declarada en `scalaVersion := xx.xx.xx`\n<br>\n* A `libraryDependencies` se le puede asignar una secuencia de dependencias:\n<br>\n```scala\nlibraryDependencies ++= Seq(\n    // Spark dependencies\n    \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\",\n    \"joda-time\" % \"joda-time\" % \"2.0\"\n)\n```\n\n* `provided` indica que no empaquete la librería: usa la del ambiente de ejecución Spark.\n* Más información de sbt en\n    - [http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/](http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/)\n    - [http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html](http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html)\n    - [https://www.playframework.com/documentation/2.1.1/SBTDependencies](https://www.playframework.com/documentation/2.1.1/SBTDependencies)\n","dateUpdated":"2017-09-29T18:28:51-0300","config":{"tableHide":false,"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h4>Agregando dependencias en el archivo .sbt</h4>\n<ul>\n<li><p>Las dependencias se agregan a través de <code>libraryDependencies</code>.</p>\n</li>\n<li><p>En <code>libraryDependencies</code> a una librería se le puede indicar una versión de scala específica:\n<br  /><br></p>\n<pre><code>libraryDependencies +=  \"org.apache.spark\" % \"spark-core_2.9\" % \"1.6.1\" % \"provided\n</code></pre>\n<ul>\n<li>notar que se usa simple <code>%</code></li>\n<li>si se usa <code>%%</code> sbt agrega automaticamente la version declarada en <code>scalaVersion := xx.xx.xx</code>\n<br  /><br></li>\n</ul>\n</li>\n<li><p>A <code>libraryDependencies</code> se le puede asignar una secuencia de dependencias:\n<br  /><br></p>\n<pre><code class=\"scala\">libraryDependencies ++= Seq(\n// Spark dependencies\n\"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\",\n\"joda-time\" % \"joda-time\" % \"2.0\"\n)\n</code></pre>\n</li>\n<li><p><code>provided</code> indica que no empaquete la librería: usa la del ambiente de ejecución Spark.</p>\n</li>\n<li><p>Más información de sbt en</p>\n<ul>\n<li><a href=\"http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/\">http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/</a></li>\n<li><a href=\"http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html\">http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html</a></li>\n<li><a href=\"https://www.playframework.com/documentation/2.1.1/SBTDependencies\">https://www.playframework.com/documentation/2.1.1/SBTDependencies</a></li>\n</ul>\n</li>\n</ul>\n"}]},"apps":[],"jobName":"paragraph_1506720531899_-1244476937","id":"20160901-180742_1375631040","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:33"},{"text":"%md\n\n### Script de setup para el haragan :P\n\n```bash\n#!/bin/bash\n\nPROJECT=$1\n\nmkdir -p $PROJECT/src/{main,test}/{java,resources,scala}\nmkdir $PROJECT/{lib,project,target,doc}\n\nVERSION=$(scala -version 2>&1 | sed 's/^.*version \\([0-9.]*\\).*/\\1/')\n\necho 'name := \"'$PROJECT'\"' > $PROJECT/$PROJECT.sbt\necho 'version := \"1.0\"' >> $PROJECT/$PROJECT.sbt\necho 'scalaVersion := \"'$VERSION'\"' >> $PROJECT/$PROJECT.sbt\necho 'libraryDependencies += \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"' >> $PROJECT/$PROJECT.sbt\n\necho 'bin/\ntarget/' >> $PROJECT/.gitignore\n\n#change to project dir\ncd $PROJECT\n#create eclipse files.\nsbt eclipse\n```\n","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>Script de setup para el haragan :P</h3>\n<pre><code class=\"bash\">#!/bin/bash\n\nPROJECT=$1\n\nmkdir -p $PROJECT/src/{main,test}/{java,resources,scala}\nmkdir $PROJECT/{lib,project,target,doc}\n\nVERSION=$(scala -version 2&gt;&amp;1 | sed 's/^.*version \\([0-9.]*\\).*/\\1/')\n\necho 'name := \"'$PROJECT'\"' &gt; $PROJECT/$PROJECT.sbt\necho 'version := \"1.0\"' &gt;&gt; $PROJECT/$PROJECT.sbt\necho 'scalaVersion := \"'$VERSION'\"' &gt;&gt; $PROJECT/$PROJECT.sbt\necho 'libraryDependencies += \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"' &gt;&gt; $PROJECT/$PROJECT.sbt\n\necho 'bin/\ntarget/' &gt;&gt; $PROJECT/.gitignore\n\n#change to project dir\ncd $PROJECT\n#create eclipse files.\nsbt eclipse\n</code></pre>\n"}]},"apps":[],"jobName":"paragraph_1506720531904_-1260251642","id":"20160921-000917_1193350083","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:34"},{"text":"%md\n## ~.- Aplicación (Job) de Spark\n\n* Toda aplicación debe tener un \"punto de entrada\" definido mediante el método `main`:\n\n* El `main()` es ejecutado por el **driver**.\n<br>\n\n```scala\n/* CuentaAB.scala */\nimport org.apache.spark.SparkContext\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.SparkConf\n\nobject CuentaAB {\n  def main(args: Array[String]) {\n    val logFile = args(0) // Un archivo en el file system\n    val conf = new SparkConf().setAppName(\"Cuenta a y b\")\n    val sc = new SparkContext(conf)\n    val logData = sc.textFile(logFile, 2).cache()\n    val numAs = logData.filter(line => line.contains(\"a\")).count()\n    val numBs = logData.filter(line => line.contains(\"b\")).count()\n    println(\"Lineas con a: %s, Lineas con b: %s\".format(numAs, numBs))\n  }\n}\n```\n\n**Nota:** Se usa `main()` y no una subclase de `scala.App`.","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h2>~.- Aplicación (Job) de Spark</h2>\n<ul>\n<li><p>Toda aplicación debe tener un &ldquo;punto de entrada&rdquo; definido mediante el método <code>main</code>:</p>\n</li>\n<li><p>El <code>main()</code> es ejecutado por el <strong>driver</strong>.\n<br  /><br></p>\n</li>\n</ul>\n<pre><code class=\"scala\">/* CuentaAB.scala */\nimport org.apache.spark.SparkContext\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.SparkConf\n\nobject CuentaAB {\n  def main(args: Array[String]) {\n    val logFile = args(0) // Un archivo en el file system\n    val conf = new SparkConf().setAppName(\"Cuenta a y b\")\n    val sc = new SparkContext(conf)\n    val logData = sc.textFile(logFile, 2).cache()\n    val numAs = logData.filter(line =&gt; line.contains(\"a\")).count()\n    val numBs = logData.filter(line =&gt; line.contains(\"b\")).count()\n    println(\"Lineas con a: %s, Lineas con b: %s\".format(numAs, numBs))\n  }\n}\n</code></pre>\n<p><strong>Nota:</strong> Se usa <code>main()</code> y no una subclase de <code>scala.App</code>.</p>\n"}]},"apps":[],"jobName":"paragraph_1506720531912_-1263329633","id":"20160830-161420_964310911","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:35"},{"text":"%md\n### SparkContext\n\n* El uso de las API's (ej, RDD) dentro de una aplicación autónoma es el mismo que se hace en una sesión interactiva.\n* Pero, hay que crear manualmente el `SparkContext`.\n* En modo interactivo vimos que ya está definido el objeto `sc` de tipo `SparkContext`.\n* Para una aplicación autónoma hay que crearlo:\n\n```scala\nimport org.apache.spark.SparkContext\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.SparkConf\n\n...\nval conf = new SparkConf().setAppName(\"Mi Applicacion\")\nval sc = new SparkContext(conf)\n...\n```\n\nEn el ejemplo \n* se importan las clases necesarias\n* se crea el `SparkConf` con la configuración de la aplicación\n    - se indica el nombre que identificará la aplicación en **SparkUI**\n* se crea el `SparkContext` pasándole como parámetro la configuración\n\nTambién se puede indicar el URL del cluster:\n```scala\nval conf = new SparkConf().setAppName(\"Mi Applicacion\").setMaster(\"local[*]\")\n```\n\naunque puede ser conveniente no harcodearlo en la aplicación.","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>SparkContext</h3>\n<ul>\n<li>El uso de las API's (ej, RDD) dentro de una aplicación autónoma es el mismo que se hace en una sesión interactiva.</li>\n<li>Pero, hay que crear manualmente el <code>SparkContext</code>.</li>\n<li>En modo interactivo vimos que ya está definido el objeto <code>sc</code> de tipo <code>SparkContext</code>.</li>\n<li>Para una aplicación autónoma hay que crearlo:</li>\n</ul>\n<pre><code class=\"scala\">import org.apache.spark.SparkContext\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.SparkConf\n\n...\nval conf = new SparkConf().setAppName(\"Mi Applicacion\")\nval sc = new SparkContext(conf)\n...\n</code></pre>\n<p>En el ejemplo</p>\n<ul>\n<li>se importan las clases necesarias</li>\n<li>se crea el <code>SparkConf</code> con la configuración de la aplicación<ul>\n<li>se indica el nombre que identificará la aplicación en <strong>SparkUI</strong></li>\n</ul>\n</li>\n<li>se crea el <code>SparkContext</code> pasándole como parámetro la configuración</li>\n</ul>\n<p>También se puede indicar el URL del cluster:</p>\n<pre><code class=\"scala\">val conf = new SparkConf().setAppName(\"Mi Applicacion\").setMaster(\"local[*]\")\n</code></pre>\n<p>aunque puede ser conveniente no harcodearlo en la aplicación.</p>\n"}]},"apps":[],"jobName":"paragraph_1506720531913_-1263714382","id":"20160830-160603_1923521712","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:36"},{"text":"%md\n#### Empaquetado\n\n* Al enviarse una aplicación a Spark también se deben proveer todas las librerías del *grafo de dependencias transitivas*:\n    - no solo las librerías que usamos si no las que ellas usan.\n\n* Lo mas conveniente es crear un fat JAR.\n\nEn la raiz del proyecto:\n\n```console\n$ sbt assembly\n[info] Loading global plugins from /.sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:tmp/cuentaAB/)\n[info] Updating {file:tmp/cuentaAB/}cuentaab...\n[info] Resolving org.scala-lang#scalap;2.10.5 ...\n[info] Done updating.\n[info] Including from cache: scala-library-2.10.5.jar\n[info] Checking every *.class/*.jar file's SHA-1.\n[info] Merging files...\n[warn] Merging 'META-INF/MANIFEST.MF' with strategy 'discard'\n[warn] Strategy 'discard' was applied to a file\n[info] SHA-1: fccf7195b12e31b9c7f956504a8341b65057e2e2\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaAB-assembly-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 7 s, completed Sep 21, 2016 8:47:39 AM\n\n```\n\n* Si se esta probando la aplicación en un entorno local, se puede evitar la creación de un fat JAR. \n\n```console\n$ sbt package\n[info] Loading global plugins from .sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:/tmp/cuentaAB/)\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaab_2.10-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 0 s, completed Sep 21, 2016 8:50:35 AM\n```\n\n","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h4>Empaquetado</h4>\n<ul>\n<li><p>Al enviarse una aplicación a Spark también se deben proveer todas las librerías del <em>grafo de dependencias transitivas</em>:</p>\n<ul>\n<li>no solo las librerías que usamos si no las que ellas usan.</li>\n</ul>\n</li>\n<li><p>Lo mas conveniente es crear un fat JAR.</p>\n</li>\n</ul>\n<p>En la raiz del proyecto:</p>\n<pre><code class=\"console\">$ sbt assembly\n[info] Loading global plugins from /.sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:tmp/cuentaAB/)\n[info] Updating {file:tmp/cuentaAB/}cuentaab...\n[info] Resolving org.scala-lang#scalap;2.10.5 ...\n[info] Done updating.\n[info] Including from cache: scala-library-2.10.5.jar\n[info] Checking every *.class/*.jar file's SHA-1.\n[info] Merging files...\n[warn] Merging 'META-INF/MANIFEST.MF' with strategy 'discard'\n[warn] Strategy 'discard' was applied to a file\n[info] SHA-1: fccf7195b12e31b9c7f956504a8341b65057e2e2\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaAB-assembly-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 7 s, completed Sep 21, 2016 8:47:39 AM\n</code></pre>\n<ul>\n<li>Si se esta probando la aplicación en un entorno local, se puede evitar la creación de un fat JAR.</li>\n</ul>\n<pre><code class=\"console\">$ sbt package\n[info] Loading global plugins from .sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:/tmp/cuentaAB/)\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaab_2.10-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 0 s, completed Sep 21, 2016 8:50:35 AM\n</code></pre>\n"}]},"apps":[],"jobName":"paragraph_1506720531915_-1262944884","id":"20160901-183722_1130198137","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:37"},{"text":"%md \n\n### Ejecución\n\n* Para enviar una aplicación a Spark usamos un script llamado `spark-submit`.\n\n* Formato general:\n\n    ```\n    bin/spark-submit [options] <app jar | python file> [app options]\n    ```\n* `[options]` es una lista de flags para `spark-submit`. Ver `spark-submit --help`.\n* `<app jar | python file>` es el JAR o el script de python a ejecutar.\n* `[app options]` son los argumentos que se pasan a la aplicación.\n* También se pueden setear configuraciones del SparkConf usando `--conf prop=value` o especificando un archivo de propiedades mediante `--properties-file`.\n* Cuando se ejecuta `spark-submit` sin nada mas que el nombre del JAR, se ejecuta la aplicación localmente.\n\n**Ejemplo:**\n<br>\n```console\n$ ./bin/spark-submit \\\n--master spark://hostname:7077 \\\n--deploy-mode cluster \\\n--class com.databricks.examples.SparkExample \\ --name \"Example Program\" \\\n--jars dep1.jar,dep2.jar,dep3.jar \\ --total-executor-cores 300 \\\n--executor-memory 10g \\\nmyApp.jar \"options\" \"to your application\" \"go here\"\n```","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":false,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<h3>Ejecución</h3>\n<ul>\n<li><p>Para enviar una aplicación a Spark usamos un script llamado <code>spark-submit</code>.</p>\n</li>\n<li><p>Formato general:</p>\n<pre><code>bin/spark-submit [options] &lt;app jar | python file&gt; [app options]\n</code></pre>\n</li>\n<li><p><code>[options]</code> es una lista de flags para <code>spark-submit</code>. Ver <code>spark-submit --help</code>.</p>\n</li>\n<li><p><code>&lt;app jar | python file&gt;</code> es el JAR o el script de python a ejecutar.</p>\n</li>\n<li><p><code>[app options]</code> son los argumentos que se pasan a la aplicación.</p>\n</li>\n<li><p>También se pueden setear configuraciones del SparkConf usando <code>--conf prop=value</code> o especificando un archivo de propiedades mediante <code>--properties-file</code>.</p>\n</li>\n<li><p>Cuando se ejecuta <code>spark-submit</code> sin nada mas que el nombre del JAR, se ejecuta la aplicación localmente.</p>\n</li>\n</ul>\n<p><strong>Ejemplo:</strong>\n<br  /><br></p>\n<pre><code class=\"console\">$ ./bin/spark-submit \\\n--master spark://hostname:7077 \\\n--deploy-mode cluster \\\n--class com.databricks.examples.SparkExample \\ --name \"Example Program\" \\\n--jars dep1.jar,dep2.jar,dep3.jar \\ --total-executor-cores 300 \\\n--executor-memory 10g \\\nmyApp.jar \"options\" \"to your application\" \"go here\"\n</code></pre>\n"}]},"apps":[],"jobName":"paragraph_1506720531917_-1265253378","id":"20160921-002959_1896352202","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:38"},{"title":"FIN","text":"print(\"\"\"%html\n<script>\n    var heads = document.getElementsByTagName('h2');\n    var numHeads = heads.length;\n    var inner = \"\";\n    var i = 0;\n    var j = 0;\n    while (i < numHeads){\n        inner = heads[i].innerHTML;\n        if (inner.search(\".-\") != -1 ) {\n            j++;\n            heads[i].innerHTML = inner.replace(/(~|\\d+)\\.-/,\"\"+j+\".-\");\n        }\n        i++\n    }\n</script>\n\"\"\")","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/scala","editorHide":true,"title":true,"results":[{"graph":{"mode":"table","height":300,"optionOpen":false,"keys":[],"values":[],"groups":[],"scatter":{}}}],"enabled":true,"editorSetting":{}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<script>\n    var heads = document.getElementsByTagName('h2');\n    var numHeads = heads.length;\n    var inner = \"\";\n    var i = 0;\n    var j = 0;\n    while (i < numHeads){\n        inner = heads[i].innerHTML;\n        if (inner.search(\".-\") != -1 ) {\n            j++;\n            heads[i].innerHTML = inner.replace(/(~|\\d+)\\.-/,\"\"+j+\".-\");\n        }\n        i++\n    }\n</script>\n"}]},"apps":[],"jobName":"paragraph_1506720531918_-1264099131","id":"20160830-165045_1663894118","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:39"},{"text":"","dateUpdated":"2017-09-29T18:28:51-0300","config":{"colWidth":12,"editorMode":"ace/mode/scala","results":[],"enabled":true,"editorSetting":{"language":"scala"}},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[]},"apps":[],"jobName":"paragraph_1506720531920_-1254095659","id":"20160830-165158_957810942","dateCreated":"2017-09-29T18:28:51-0300","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:40"}],"name":"Presentación 05 - Aplicaciones Autónomas","id":"2CUXQ364N","angularObjects":{"2CQY683MD:shared_process":[],"2CRGPDJTN:shared_process":[],"2CTZD3XCX:shared_process":[],"2CRMCDEQM:shared_process":[],"2CTAV9E28:shared_process":[],"2CRA7KCDA:shared_process":[],"2CQ81X7G5:shared_process":[],"2CRUQ6EVN:shared_process":[],"2CTHYC7X9:shared_process":[],"2CRHWDFYM:shared_process":[],"2CQJ7MXW5:shared_process":[],"2CQAR5VSM:shared_process":[],"2CRCFF6HB:shared_process":[],"2CTK8TR8Q:shared_process":[],"2CQN5Q87B:shared_process":[],"2CTW5YZGW:shared_process":[],"2CSR7EJVT:shared_process":[],"2CRUQ7EXT:shared_process":[],"2CRFFBRXJ:shared_process":[]},"config":{"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "text": "print(\"\"\"%html\n\u003ccenter\u003e\n    \u003ch1\u003eProgramación Distribuida sobre Grandes Volúmenes de Datos\u003c/h1\u003e\n\u003c/center\u003e\n\n\u003cbr\u003e\n\n\u003ch3 style\u003d\"text-align:center;\"\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    Facultad de Matemática Astronomía Física y Computación\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ca href\u003d\"http://www.unc.edu.ar\"\u003e\n    Universidad Nacional de Córdoba\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ccenter\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    \u003cimg src\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt\u003d\"Drawing\" style\u003d\"width:50%;\"/\u003e\n    \u003c/a\u003e\n    \u003c/center\u003e\n\u003c/h3\u003e\n\n\u003ch4 style\u003d\"text-align:center;\"\u003e Damián Barsotti - Ezequiel Orbe  \u003c/h4\u003e\n\n\u003cp style\u003d\"font-size:15px;\"\u003e\n    \u003cbr /\u003e\n        This work is licensed under a\n        \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003eCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International License\u003c/a\u003e.\n    \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003e\n        \u003cimg alt\u003d\"Creative Commons License\" style\u003d\"border-width:0;vertical-align:middle;float:right\" src\u003d\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /\u003e\n    \u003c/a\u003e\n\u003c/p\u003e\n\"\"\")\n",
+      "dateUpdated": "Oct 18, 2017 10:43:17 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ccenter\u003e\n    \u003ch1\u003eProgramación Distribuida sobre Grandes Volúmenes de Datos\u003c/h1\u003e\n\u003c/center\u003e\n\n\u003cbr\u003e\n\n\u003ch3 style\u003d\"text-align:center;\"\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    Facultad de Matemática Astronomía Física y Computación\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ca href\u003d\"http://www.unc.edu.ar\"\u003e\n    Universidad Nacional de Córdoba\n    \u003c/a\u003e\n\u003cbr/\u003e\n    \u003ccenter\u003e\n    \u003ca href\u003d\"http://www.famaf.unc.edu.ar\"\u003e\n    \u003cimg src\u003d\"https://cs.famaf.unc.edu.ar/~damian/bigdata/curso/posgrado_optativa/lectivo/presentaciones/comun/logo%20UNC%20FAMAF%202016.svg\" alt\u003d\"Drawing\" style\u003d\"width:50%;\"/\u003e\n    \u003c/a\u003e\n    \u003c/center\u003e\n\u003c/h3\u003e\n\n\u003ch4 style\u003d\"text-align:center;\"\u003e Damián Barsotti - Ezequiel Orbe  \u003c/h4\u003e\n\n\u003cp style\u003d\"font-size:15px;\"\u003e\n    \u003cbr /\u003e\n        This work is licensed under a\n        \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003eCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International License\u003c/a\u003e.\n    \u003ca rel\u003d\"license\" href\u003d\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"\u003e\n        \u003cimg alt\u003d\"Creative Commons License\" style\u003d\"border-width:0;vertical-align:middle;float:right\" src\u003d\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /\u003e\n    \u003c/a\u003e\n\u003c/p\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334197971_-1053117841",
+      "id": "20160830-160425_56195218",
+      "dateCreated": "Oct 18, 2017 10:43:17 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Aplicaciones autónomas\n\nComo ya vimos Spark puede correr:\n* de forma interactiva con shell (data exploration, prototyping)\n* como una **aplicación autónoma** (standalone) Scala, Python o Java (job recurrente).\n\nNos concentraremos en como construir una aplicación en Scala.\n\n",
+      "dateUpdated": "Oct 18, 2017 10:43:17 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch1\u003eAplicaciones autónomas\u003c/h1\u003e\n\u003cp\u003eComo ya vimos Spark puede correr:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ede forma interactiva con shell (data exploration, prototyping)\u003c/li\u003e\n\u003cli\u003ecomo una \u003cstrong\u003eaplicación autónoma\u003c/strong\u003e (standalone) Scala, Python o Java (job recurrente).\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNos concentraremos en Scala.\u003c/p\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334197992_-1075048529",
+      "id": "20160830-160523_1822218154",
+      "dateCreated": "Oct 18, 2017 10:43:17 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## ~.- Entorno de Desarrollo y Setup\n\nPara desarrollar aplicaciones de Spark en Scala necesitaremos los siguiente:\n\n* Scala\n* SBT\n* Scala IDE (opcional)\n* Spark ",
+      "dateUpdated": "Oct 18, 2017 10:43:17 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch2\u003e~.- Entorno de Desarrollo y Setup\u003c/h2\u003e\n\u003cp\u003ePara desarrollar aplicaciones de Spark en Scala necesitaremos los siguiente:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eScala\u003c/li\u003e\n\u003cli\u003eSBT\u003c/li\u003e\n\u003cli\u003eScala IDE (opcional)\u003c/li\u003e\n\u003cli\u003eSpark\u003c/li\u003e\n\u003c/ul\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334197996_-1076587524",
+      "id": "20160920-202245_1044937570",
+      "dateCreated": "Oct 18, 2017 10:43:17 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n### Scala IDE\n\n* Es un full IDE para desarrollar en scala.\n\n* Se puede descargar desde: [http://scala-ide.org/](http://scala-ide.org/)\n\n* **Pros**:\n    * Intellisense \n    * Integracion con para correr unit tests.\n    * etc.\n\n* **Cons**: \n    * Memory-Intensive (es \"pesado\").",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eScala IDE\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003eEs un full IDE para desarrollar en scala.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eSe puede descargar desde: \u003ca href\u003d\"http://scala-ide.org/\"\u003ehttp://scala-ide.org/\u003c/a\u003e\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003cstrong\u003ePros\u003c/strong\u003e:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eIntellisense\u003c/li\u003e\n\u003cli\u003eIntegracion con para correr unit tests.\u003c/li\u003e\n\u003cli\u003eetc.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003cstrong\u003eCons\u003c/strong\u003e:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eMemory-Intensive (es \u0026ldquo;pesado\u0026rdquo;).\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198000_-1065814555",
+      "id": "20160920-204557_790425937",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n\n### Estructura del Proyecto.\n\n* La estructura recomendada sigue los lineamientos sugeridos por [Maven](http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)\n\n```\n\u003cproject\u003e\n    - src\n        - main\n            - resources \n            - scala\n        - test\n            - resources \n            - scala\n    - lib\n    - project\n    - target\n    - doc\n    - \u003cproject\u003e.sbt\n```",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eEstructura del Proyecto.\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eLa estructura recomendada sigue los lineamientos sugeridos por \u003ca href\u003d\"http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html\"\u003eMaven\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003e\u0026lt;project\u0026gt;\n    - src\n        - main\n            - resources \n            - scala\n        - test\n            - resources \n            - scala\n    - lib\n    - project\n    - target\n    - doc\n    - \u0026lt;project\u0026gt;.sbt\n\u003c/code\u003e\u003c/pre\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198003_-1065429806",
+      "id": "20160920-205118_1927997315",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Sbt\n\nEs una herramienta de compilación y gestión de dependencias para aplicaciones Scala.\n\n#### Instalación\n\n* Debian/Ubuntu\n```shell-session\n$ echo \"deb https://dl.bintray.com/sbt/debian /\" | sudo tee -a /etc/apt/sources.list.d/sbt.list\n$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823\n$ sudo apt-get update\n$ sudo apt-get install sbt\n```\n\n* Mac\n\n```shell\nbrew install sbt\n```\n\n* Windows MSI en [https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/](https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/)\n\n* `tar.gz` y `zip` en [http://www.scala-sbt.org/download.html](http://www.scala-sbt.org/download.html)\n\n#### Plugins Utiles\n\n* **sbteclipse:** Para generar proyectos de Eclipse.\n* **sbt-assembly:** Para crear \"fat\" JARS.\n\n#### Comandos Utiles\n\n* **sbt update:** Actualiza las dependencias.\n\n* **sbt eclipse:** Crea un proyecto de Eclipse y actualiza las referencias del proyecto.\n\n* **sbt package:** Empaqueta la aplicación creando un JAR (no fat!).\n\n* **sbt assembly:** Empaqueta la aplicación creando un fat JAR. \n",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eSbt\u003c/h3\u003e\n\u003cp\u003eEs una herramienta de compilación y gestión de dependencias para aplicaciones Scala.\u003c/p\u003e\n\u003ch4\u003eInstalación\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003eDebian/Ubuntu\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"shell-session\"\u003e$ echo \"deb https://dl.bintray.com/sbt/debian /\" | sudo tee -a /etc/apt/sources.list.d/sbt.list\n$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823\n$ sudo apt-get update\n$ sudo apt-get install sbt\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eMac\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"shell\"\u003ebrew install sbt\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003eWindows MSI en \u003ca href\u003d\"https://dl.bintray.com/sbt/native-packages/sbt/0.13.x/\"\u003ehttps://dl.bintray.com/sbt/native-packages/sbt/0.13.x/\u003c/a\u003e\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003ccode\u003etar.gz\u003c/code\u003e y \u003ccode\u003ezip\u003c/code\u003e en \u003ca href\u003d\"http://www.scala-sbt.org/download.html\"\u003ehttp://www.scala-sbt.org/download.html\u003c/a\u003e\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003ePlugins Utiles\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003esbteclipse:\u003c/strong\u003e Para generar proyectos de Eclipse.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003esbt-assembly:\u003c/strong\u003e Para crear \u0026ldquo;fat\u0026rdquo; JARS.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eComandos Utiles\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003e\u003cstrong\u003esbt update:\u003c/strong\u003e Actualiza las dependencias.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003cstrong\u003esbt eclipse:\u003c/strong\u003e Crea un proyecto de Eclipse y actualiza las referencias del proyecto.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003cstrong\u003esbt package:\u003c/strong\u003e Empaqueta la aplicación creando un JAR (no fat!).\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003cstrong\u003esbt assembly:\u003c/strong\u003e Empaqueta la aplicación creando un fat JAR.\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198007_-1066968802",
+      "id": "20160830-173003_2005788781",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n### Contenido básico del archivo .sbt\n\n```scala\nname :\u003d \"\u003cproject\u003e\"\n\nversion :\u003d \"1.0\"\n\nscalaVersion :\u003d \"2.10.5\"\n\nlibraryDependencies +\u003d  \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"\n```",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eContenido básico del archivo .sbt\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003ename :\u003d \"\u0026lt;project\u0026gt;\"\n\nversion :\u003d \"1.0\"\n\nscalaVersion :\u003d \"2.10.5\"\n\nlibraryDependencies +\u003d  \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"\n\u003c/code\u003e\u003c/pre\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198011_-1068507797",
+      "id": "20160921-000303_1324292834",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Agregando dependencias en el archivo .sbt\n\n* Las dependencias se agregan a través de `libraryDependencies`.\n\n* En `libraryDependencies` a una librería se le puede indicar una versión de scala específica:\n\u003cbr\u003e\n```\nlibraryDependencies +\u003d  \"org.apache.spark\" % \"spark-core_2.9\" % \"1.6.1\" % \"provided\n```\n    - notar que se usa simple `%`\n    - si se usa `%%` sbt agrega automaticamente la version declarada en `scalaVersion :\u003d xx.xx.xx`\n\u003cbr\u003e\n* A `libraryDependencies` se le puede asignar una secuencia de dependencias:\n\u003cbr\u003e\n```scala\nlibraryDependencies ++\u003d Seq(\n    // Spark dependencies\n    \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\",\n    \"joda-time\" % \"joda-time\" % \"2.0\"\n)\n```\n\n* `provided` indica que no empaquete la librería: usa la del ambiente de ejecución Spark.\n* Más información de sbt en\n    - [http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/](http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/)\n    - [http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html](http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html)\n    - [https://www.playframework.com/documentation/2.1.1/SBTDependencies](https://www.playframework.com/documentation/2.1.1/SBTDependencies)\n",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "tableHide": false,
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch4\u003eAgregando dependencias en el archivo .sbt\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003eLas dependencias se agregan a través de \u003ccode\u003elibraryDependencies\u003c/code\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eEn \u003ccode\u003elibraryDependencies\u003c/code\u003e a una librería se le puede indicar una versión de scala específica:\n\u003cbr  /\u003e\u003cbr\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003elibraryDependencies +\u003d  \"org.apache.spark\" % \"spark-core_2.9\" % \"1.6.1\" % \"provided\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003enotar que se usa simple \u003ccode\u003e%\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003esi se usa \u003ccode\u003e%%\u003c/code\u003e sbt agrega automaticamente la version declarada en \u003ccode\u003escalaVersion :\u003d xx.xx.xx\u003c/code\u003e\n\u003cbr  /\u003e\u003cbr\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eA \u003ccode\u003elibraryDependencies\u003c/code\u003e se le puede asignar una secuencia de dependencias:\n\u003cbr  /\u003e\u003cbr\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003elibraryDependencies ++\u003d Seq(\n// Spark dependencies\n\"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\",\n\"joda-time\" % \"joda-time\" % \"2.0\"\n)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003ccode\u003eprovided\u003c/code\u003e indica que no empaquete la librería: usa la del ambiente de ejecución Spark.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eMás información de sbt en\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"http://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/\"\u003ehttp://michele.sciabarra.com/2015/12/11/scala/SBT-from-scratch/\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"http://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html\"\u003ehttp://www.scala-sbt.org/0.12.4/docs/Detailed-Topics/Library-Management.html\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://www.playframework.com/documentation/2.1.1/SBTDependencies\"\u003ehttps://www.playframework.com/documentation/2.1.1/SBTDependencies\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198015_-1070046793",
+      "id": "20160901-180742_1375631040",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n### Script de setup para el haragan :P\n\n```bash\n#!/bin/bash\n\nPROJECT\u003d$1\n\nmkdir -p $PROJECT/src/{main,test}/{java,resources,scala}\nmkdir $PROJECT/{lib,project,target,doc}\n\nVERSION\u003d$(scala -version 2\u003e\u00261 | sed \u0027s/^.*version \\([0-9.]*\\).*/\\1/\u0027)\n\necho \u0027name :\u003d \"\u0027$PROJECT\u0027\"\u0027 \u003e $PROJECT/$PROJECT.sbt\necho \u0027version :\u003d \"1.0\"\u0027 \u003e\u003e $PROJECT/$PROJECT.sbt\necho \u0027scalaVersion :\u003d \"\u0027$VERSION\u0027\"\u0027 \u003e\u003e $PROJECT/$PROJECT.sbt\necho \u0027libraryDependencies +\u003d \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"\u0027 \u003e\u003e $PROJECT/$PROJECT.sbt\n\necho \u0027bin/\ntarget/\u0027 \u003e\u003e $PROJECT/.gitignore\n\n#change to project dir\ncd $PROJECT\n#create eclipse files.\nsbt eclipse\n```\n",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eScript de setup para el haragan :P\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"bash\"\u003e#!/bin/bash\n\nPROJECT\u003d$1\n\nmkdir -p $PROJECT/src/{main,test}/{java,resources,scala}\nmkdir $PROJECT/{lib,project,target,doc}\n\nVERSION\u003d$(scala -version 2\u0026gt;\u0026amp;1 | sed \u0027s/^.*version \\([0-9.]*\\).*/\\1/\u0027)\n\necho \u0027name :\u003d \"\u0027$PROJECT\u0027\"\u0027 \u0026gt; $PROJECT/$PROJECT.sbt\necho \u0027version :\u003d \"1.0\"\u0027 \u0026gt;\u0026gt; $PROJECT/$PROJECT.sbt\necho \u0027scalaVersion :\u003d \"\u0027$VERSION\u0027\"\u0027 \u0026gt;\u0026gt; $PROJECT/$PROJECT.sbt\necho \u0027libraryDependencies +\u003d \"org.apache.spark\" %% \"spark-core\" % \"1.6.1\" % \"provided\"\u0027 \u0026gt;\u0026gt; $PROJECT/$PROJECT.sbt\n\necho \u0027bin/\ntarget/\u0027 \u0026gt;\u0026gt; $PROJECT/.gitignore\n\n#change to project dir\ncd $PROJECT\n#create eclipse files.\nsbt eclipse\n\u003c/code\u003e\u003c/pre\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198018_-985017286",
+      "id": "20160921-000917_1193350083",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## ~.- Aplicación (Job) de Spark\n\n* Toda aplicación debe tener un \"punto de entrada\" definido mediante el método `main`:\n\n* El `main()` es ejecutado por el **driver**.\n\u003cbr\u003e\n\n```scala\n/* WordCount.scala */\nimport org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.SaveMode\n\nobject WordCount {\n\n  def main(args: Array[String]) {\n\n    if (args.length !\u003d 2) {\n      Console.err.println(\"Need two arguments: \u003cfile in\u003e \u003cfile out\u003e\")\n      sys.exit(1)\n    }\n\n    val fIn \u003d args(0)\n    val fOut \u003d args(1)\n\n    val spark \u003d SparkSession\n      .builder()\n      .appName(\"Word Count\")\n      .config(\"spark.some.config.option\", \"algun-valor\")\n      .getOrCreate()\n\n    import spark.implicits._\n\n    val sc \u003d spark.sparkContext\n\n    sc.setLogLevel(\"WARN\")\n\n    val lines \u003d sc.textFile(fIn)\n\n    println(\"Cantidad de tareas/particiones: \" + lines.partitions.size)\n\n    val words \u003d lines\n                .flatMap(l \u003d\u003e l.split(\" \"))\n                .filter(l \u003d\u003e ! l.isEmpty)\n\n    //MapReduce\n    val wordCount \u003d words.map(x \u003d\u003e (x,1))\n                    .reduceByKey((nx,ny) \u003d\u003e nx+ny)\n\n    // ordena por cantidad\n    val result \u003d wordCount.sortBy((p \u003d\u003e p._2), ascending \u003d false)\n\n    result.toDS.write.mode(SaveMode.Overwrite).csv(fOut)\n  }\n}\n\n```\n\n**Nota:** Se usa `main()` y no una subclase de `scala.App`.",
+      "user": "anonymous",
+      "dateUpdated": "Oct 18, 2017 10:57:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e~.- Aplicación (Job) de Spark\u003c/h2\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eToda aplicación debe tener un \u0026ldquo;punto de entrada\u0026rdquo; definido mediante el método \u003ccode\u003emain\u003c/code\u003e:\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eEl \u003ccode\u003emain()\u003c/code\u003e es ejecutado por el \u003cstrong\u003edriver\u003c/strong\u003e.\u003cbr/\u003e\u003cbr\u003e\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003e/* WordCount.scala */\nimport org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.SaveMode\n\nobject WordCount {\n\n  def main(args: Array[String]) {\n\n    if (args.length !\u003d 2) {\n      Console.err.println(\u0026quot;Need two arguments: \u0026lt;file in\u0026gt; \u0026lt;file out\u0026gt;\u0026quot;)\n      sys.exit(1)\n    }\n\n    val fIn \u003d args(0)\n    val fOut \u003d args(1)\n\n    val spark \u003d SparkSession\n      .builder()\n      .appName(\u0026quot;Word Count\u0026quot;)\n      .config(\u0026quot;spark.some.config.option\u0026quot;, \u0026quot;algun-valor\u0026quot;)\n      .getOrCreate()\n\n    import spark.implicits._\n\n    val sc \u003d spark.sparkContext\n\n    sc.setLogLevel(\u0026quot;WARN\u0026quot;)\n\n    val lines \u003d sc.textFile(fIn)\n\n    println(\u0026quot;Cantidad de tareas/particiones: \u0026quot; + lines.partitions.size)\n\n    val words \u003d lines\n                .flatMap(l \u003d\u0026gt; l.split(\u0026quot; \u0026quot;))\n                .filter(l \u003d\u0026gt; ! l.isEmpty)\n\n    //MapReduce\n    val wordCount \u003d words.map(x \u003d\u0026gt; (x,1))\n                    .reduceByKey((nx,ny) \u003d\u0026gt; nx+ny)\n\n    // ordena por cantidad\n    val result \u003d wordCount.sortBy((p \u003d\u0026gt; p._2), ascending \u003d false)\n\n    result.toDS.write.mode(SaveMode.Overwrite).csv(fOut)\n  }\n}\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003eNota:\u003c/strong\u003e Se usa \u003ccode\u003emain()\u003c/code\u003e y no una subclase de \u003ccode\u003escala.App\u003c/code\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198022_-986556282",
+      "id": "20160830-161420_964310911",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "dateStarted": "Oct 18, 2017 10:56:09 AM",
+      "dateFinished": "Oct 18, 2017 10:56:09 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### SparkSession/SparkContext\n\n* El uso de las API\u0027s (ej, RDD, SQL) dentro de una aplicación autónoma es el mismo que se hace en una sesión interactiva.\n* Pero, hay que crear manualmente el `SparkSession` y `SparkContext`.\n* En modo interactivo vimos que ya está definido el objeto `spark` de tipo `SparkSession` y el objeto `sc` de tipo `SparkContext`.\n* Para una aplicación autónoma hay que crearlos:\n\n```scala\nimport org.apache.spark.sql.SparkSession\n...\n    val spark \u003d SparkSession\n      .builder()\n      .appName(\"Word Count\")\n      .config(\"spark.some.config.option\", \"algun-valor\")\n      .getOrCreate()\n\n    import spark.implicits._\n\n    val sc \u003d spark.sparkContext\n...\n```\n\nEn el ejemplo \n* se importan las clases necesarias\n* se crea el `SparkSession` con la configuración de la aplicación\n    - se indica el nombre que identificará la aplicación en **SparkUI**\n* se crea el `SparkContext` a partir del `SparkSession`.\n\nTambién se puede indicar el URL del cluster:\n```scala\nval spark \u003d SparkSession\n      .builder()\n      .appName(\"Word Count\")\n      .config(\"spark.some.config.option\", \"algun-valor\")\n      .master(\"local[*]\")\n      .getOrCreate()\n```\n\naunque puede ser conveniente no harcodearlo en la aplicación.\n\nMas info en [Mastering Apache Spark](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-SparkSession.html).\n",
+      "user": "anonymous",
+      "dateUpdated": "Oct 18, 2017 11:09:07 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSparkSession/SparkContext\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eEl uso de las API\u0026rsquo;s (ej, RDD, SQL) dentro de una aplicación autónoma es el mismo que se hace en una sesión interactiva.\u003c/li\u003e\n  \u003cli\u003ePero, hay que crear manualmente el \u003ccode\u003eSparkSession\u003c/code\u003e y \u003ccode\u003eSparkContext\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003eEn modo interactivo vimos que ya está definido el objeto \u003ccode\u003espark\u003c/code\u003e de tipo \u003ccode\u003eSparkSession\u003c/code\u003e y el objeto \u003ccode\u003esc\u003c/code\u003e de tipo \u003ccode\u003eSparkContext\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003ePara una aplicación autónoma hay que crearlos:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003eimport org.apache.spark.sql.SparkSession\n...\n    val spark \u003d SparkSession\n      .builder()\n      .appName(\u0026quot;Word Count\u0026quot;)\n      .config(\u0026quot;spark.some.config.option\u0026quot;, \u0026quot;algun-valor\u0026quot;)\n      .getOrCreate()\n\n    import spark.implicits._\n\n    val sc \u003d spark.sparkContext\n...\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eEn el ejemplo\u003cbr/\u003e* se importan las clases necesarias\u003cbr/\u003e* se crea el \u003ccode\u003eSparkSession\u003c/code\u003e con la configuración de la aplicación\u003cbr/\u003e - se indica el nombre que identificará la aplicación en \u003cstrong\u003eSparkUI\u003c/strong\u003e\u003cbr/\u003e* se crea el \u003ccode\u003eSparkContext\u003c/code\u003e a partir del \u003ccode\u003eSparkSession\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eTambién se puede indicar el URL del cluster:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"scala\"\u003eval spark \u003d SparkSession\n      .builder()\n      .appName(\u0026quot;Word Count\u0026quot;)\n      .config(\u0026quot;spark.some.config.option\u0026quot;, \u0026quot;algun-valor\u0026quot;)\n      .master(\u0026quot;local[*]\u0026quot;)\n      .getOrCreate()\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eaunque puede ser conveniente no harcodearlo en la aplicación.\u003c/p\u003e\n\u003cp\u003eMas info en \u003ca href\u003d\"https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-SparkSession.html\"\u003eMastering Apache Spark\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198025_-989249524",
+      "id": "20160830-160603_1923521712",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "dateStarted": "Oct 18, 2017 11:09:07 AM",
+      "dateFinished": "Oct 18, 2017 11:09:07 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n#### Empaquetado\n\n* Al enviarse una aplicación a Spark también se deben proveer todas las librerías del *grafo de dependencias transitivas*:\n    - no solo las librerías que usamos si no las que ellas usan.\n\n* Lo mas conveniente es crear un fat JAR.\n\nEn la raiz del proyecto:\n\n```console\n$ sbt assembly\n[info] Loading global plugins from /.sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:tmp/cuentaAB/)\n[info] Updating {file:tmp/cuentaAB/}cuentaab...\n[info] Resolving org.scala-lang#scalap;2.10.5 ...\n[info] Done updating.\n[info] Including from cache: scala-library-2.10.5.jar\n[info] Checking every *.class/*.jar file\u0027s SHA-1.\n[info] Merging files...\n[warn] Merging \u0027META-INF/MANIFEST.MF\u0027 with strategy \u0027discard\u0027\n[warn] Strategy \u0027discard\u0027 was applied to a file\n[info] SHA-1: fccf7195b12e31b9c7f956504a8341b65057e2e2\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaAB-assembly-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 7 s, completed Sep 21, 2016 8:47:39 AM\n\n```\n\n* Si se esta probando la aplicación en un entorno local, se puede evitar la creación de un fat JAR. \n\n```console\n$ sbt package\n[info] Loading global plugins from .sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:/tmp/cuentaAB/)\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaab_2.10-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 0 s, completed Sep 21, 2016 8:50:35 AM\n```\n\n",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch4\u003eEmpaquetado\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003eAl enviarse una aplicación a Spark también se deben proveer todas las librerías del \u003cem\u003egrafo de dependencias transitivas\u003c/em\u003e:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eno solo las librerías que usamos si no las que ellas usan.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eLo mas conveniente es crear un fat JAR.\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eEn la raiz del proyecto:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"console\"\u003e$ sbt assembly\n[info] Loading global plugins from /.sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:tmp/cuentaAB/)\n[info] Updating {file:tmp/cuentaAB/}cuentaab...\n[info] Resolving org.scala-lang#scalap;2.10.5 ...\n[info] Done updating.\n[info] Including from cache: scala-library-2.10.5.jar\n[info] Checking every *.class/*.jar file\u0027s SHA-1.\n[info] Merging files...\n[warn] Merging \u0027META-INF/MANIFEST.MF\u0027 with strategy \u0027discard\u0027\n[warn] Strategy \u0027discard\u0027 was applied to a file\n[info] SHA-1: fccf7195b12e31b9c7f956504a8341b65057e2e2\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaAB-assembly-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 7 s, completed Sep 21, 2016 8:47:39 AM\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eSi se esta probando la aplicación en un entorno local, se puede evitar la creación de un fat JAR.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"console\"\u003e$ sbt package\n[info] Loading global plugins from .sbt/0.13/plugins\n[info] Set current project to cuentaAB (in build file:/tmp/cuentaAB/)\n[info] Packaging tmp/cuentaAB/target/scala-2.10/cuentaab_2.10-1.0.jar ...\n[info] Done packaging.\n[success] Total time: 0 s, completed Sep 21, 2016 8:50:35 AM\n\u003c/code\u003e\u003c/pre\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198029_-990788519",
+      "id": "20160901-183722_1130198137",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n\n### Ejecución\n\n* Para enviar una aplicación a Spark usamos un script llamado `spark-submit`.\n\n* Formato general:\n\n    ```\n    bin/spark-submit [options] \u003capp jar | python file\u003e [app options]\n    ```\n* `[options]` es una lista de flags para `spark-submit`. Ver `spark-submit --help`.\n* `\u003capp jar | python file\u003e` es el JAR o el script de python a ejecutar.\n* `[app options]` son los argumentos que se pasan a la aplicación.\n* También se pueden setear configuraciones del SparkConf usando `--conf prop\u003dvalue` o especificando un archivo de propiedades mediante `--properties-file`.\n* Cuando se ejecuta `spark-submit` sin nada mas que el nombre del JAR, se ejecuta la aplicación localmente.\n\n**Ejemplo:**\n\u003cbr\u003e\n```console\n$ ./bin/spark-submit \\\n--master spark://hostname:7077 \\\n--deploy-mode cluster \\\n--class com.databricks.examples.SparkExample \\ --name \"Example Program\" \\\n--jars dep1.jar,dep2.jar,dep3.jar \\ --total-executor-cores 300 \\\n--executor-memory 10g \\\nmyApp.jar \"options\" \"to your application\" \"go here\"\n```",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003ch3\u003eEjecución\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cp\u003ePara enviar una aplicación a Spark usamos un script llamado \u003ccode\u003espark-submit\u003c/code\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eFormato general:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ebin/spark-submit [options] \u0026lt;app jar | python file\u0026gt; [app options]\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003ccode\u003e[options]\u003c/code\u003e es una lista de flags para \u003ccode\u003espark-submit\u003c/code\u003e. Ver \u003ccode\u003espark-submit --help\u003c/code\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003ccode\u003e\u0026lt;app jar | python file\u0026gt;\u003c/code\u003e es el JAR o el script de python a ejecutar.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003e\u003ccode\u003e[app options]\u003c/code\u003e son los argumentos que se pasan a la aplicación.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eTambién se pueden setear configuraciones del SparkConf usando \u003ccode\u003e--conf prop\u003dvalue\u003c/code\u003e o especificando un archivo de propiedades mediante \u003ccode\u003e--properties-file\u003c/code\u003e.\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eCuando se ejecuta \u003ccode\u003espark-submit\u003c/code\u003e sin nada mas que el nombre del JAR, se ejecuta la aplicación localmente.\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eEjemplo:\u003c/strong\u003e\n\u003cbr  /\u003e\u003cbr\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"console\"\u003e$ ./bin/spark-submit \\\n--master spark://hostname:7077 \\\n--deploy-mode cluster \\\n--class com.databricks.examples.SparkExample \\ --name \"Example Program\" \\\n--jars dep1.jar,dep2.jar,dep3.jar \\ --total-executor-cores 300 \\\n--executor-memory 10g \\\nmyApp.jar \"options\" \"to your application\" \"go here\"\n\u003c/code\u003e\u003c/pre\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198033_-980015550",
+      "id": "20160921-002959_1896352202",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "FIN",
+      "text": "print(\"\"\"%html\n\u003cscript\u003e\n    var heads \u003d document.getElementsByTagName(\u0027h2\u0027);\n    var numHeads \u003d heads.length;\n    var inner \u003d \"\";\n    var i \u003d 0;\n    var j \u003d 0;\n    while (i \u003c numHeads){\n        inner \u003d heads[i].innerHTML;\n        if (inner.search(\".-\") !\u003d -1 ) {\n            j++;\n            heads[i].innerHTML \u003d inner.replace(/(~|\\d+)\\.-/,\"\"+j+\".-\");\n        }\n        i++\n    }\n\u003c/script\u003e\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "Oct 18, 2017 10:56:51 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "title": true,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [],
+              "values": [],
+              "groups": [],
+              "scatter": {}
+            }
+          }
+        ],
+        "enabled": true,
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cscript\u003e\n    var heads \u003d document.getElementsByTagName(\u0027h2\u0027);\n    var numHeads \u003d heads.length;\n    var inner \u003d \"\";\n    var i \u003d 0;\n    var j \u003d 0;\n    while (i \u003c numHeads){\n        inner \u003d heads[i].innerHTML;\n        if (inner.search(\".-\") !\u003d -1 ) {\n            j++;\n            heads[i].innerHTML \u003d inner.replace(/(~|\\d+)\\.-/,\"\"+j+\".-\");\n        }\n        i++\n    }\n\u003c/script\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198036_-981169797",
+      "id": "20160830-165045_1663894118",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "dateStarted": "Oct 18, 2017 10:56:51 AM",
+      "dateFinished": "Oct 18, 2017 10:57:09 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Oct 18, 2017 10:43:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": [],
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1508334198040_-982708793",
+      "id": "20160830-165158_957810942",
+      "dateCreated": "Oct 18, 2017 10:43:18 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Presentación 05 - Aplicaciones Autónomas",
+  "id": "2CX4AA1T4",
+  "angularObjects": {
+    "2CU68GG2T:shared_process": [],
+    "2CVS7262B:shared_process": [],
+    "2CVRPE6UU:shared_process": [],
+    "2CTT1QYY4:shared_process": [],
+    "2CU5AU361:shared_process": [],
+    "2CTT6BV2A:shared_process": [],
+    "2CTEY6NNX:shared_process": [],
+    "2CTQZEXVV:shared_process": [],
+    "2CWGC7XHC:shared_process": [],
+    "2CU7MZATZ:shared_process": [],
+    "2CV2DAAF4:shared_process": [],
+    "2CUZ7QHXW:shared_process": [],
+    "2CWKV4BU5:shared_process": [],
+    "2CTEAQKGK:shared_process": [],
+    "2CW7DKJPA:shared_process": [],
+    "2CVA1M5RT:shared_process": [],
+    "2CT3EKZSX:shared_process": [],
+    "2CTVFSDYS:shared_process": [],
+    "2CW7VCDNZ:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
